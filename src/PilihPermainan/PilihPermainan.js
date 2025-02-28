@@ -7,7 +7,7 @@ document.addEventListener("DOMContentLoaded", function () {
     const btnTangkapSampah = document.getElementById("btn-tangkapsampah");
     const btnPilahSampah = document.getElementById("btn-pilahsampah");
 
-    // Variabel status volume
+    // Variabel status 
     let volumeAktif = true;
     let audio = new Audio("../../Asset/BackgroundMusic.mp3");
     audio.loop = true;
