@@ -1,0 +1,70 @@
+body {
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background: url('../../Asset/BackgroundPilihanGame.jpg') no-repeat center center/cover;
+    overflow: hidden;
+}
+
+.container {
+    position: relative;
+    width: 100%;
+    height: 100vh;
+    
+}
+
+.volume {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    width: 50px;
+    cursor: pointer;
+}
+
+.Kembali {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    width: 50px;
+    cursor: pointer;
+}
+
+.sungai {
+    position: absolute;
+    bottom: 20%;
+    left: 15%;
+    width: 150px;
+    cursor: pointer;
+}
+
+.pilihsampah {
+    position: absolute;
+    bottom: 35%;
+    right: 15%;
+    width: 150px;
+    cursor: pointer;
+}
+
+.tangkapsampah {
+    position: absolute;
+    bottom: 35%;
+    left: 40%;
+    transform: translateX(-50%);
+    width: 150px;
+    cursor: pointer;
+    -webkit-transform: translateX(-50%);
+    -moz-transform: translateX(-50%);
+    -ms-transform: translateX(-50%);
+    -o-transform: translateX(-50%);
+}
+
+.PilahSampah {
+    position: absolute;
+    bottom: 16%;
+    right: 35%;
+    width: 150px;
+    cursor: pointer;
+}

@@ -1,0 +1,63 @@
+body {
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background: url('../../Asset/BackgroundMenangkapSampah.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    overflow: hidden;
+    position: relative;
+}
+
+
+#penjelasan {
+    position: absolute;
+    top: 10%;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 80%;
+    max-width: 800px;
+    background: rgba(255, 255, 255, 0.8);
+    padding: 15px 20px;
+    border-radius: 10px;
+    font-size: 18px;
+    font-family: Arial, sans-serif;
+    text-align: justify;
+    color: #333;
+    font-weight: bold;
+}
+
+
+.button {
+    position: absolute;
+    cursor: pointer;
+    transition: transform 0.2s ease-in-out;
+}
+
+
+#btn-selanjutnya {
+    right: 20px;
+    bottom: 20px;
+    width: 180px;
+}
+
+
+#volume-btn {
+    right: 20px;
+    top: 20px;
+    width: 80px;
+}
+
+
+.button:hover {
+    transform: scale(1.1);
+}
+
+
+.button:active {
+    transform: scale(0.95);
+}

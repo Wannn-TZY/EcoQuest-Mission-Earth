@@ -1,0 +1,60 @@
+body {
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background: url('../../Asset/BackgroundTampilanUtama.jpg') no-repeat center center/cover;
+    overflow: hidden;
+}
+
+.container {
+    position: relative;
+    width: 100%;
+    height: 100vh;
+}
+
+#btn-kembali {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    width: 50px;
+    height: auto;
+    cursor: pointer;
+    transition: transform 0.3s ease;
+}
+
+#volume-btn {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    width: 50px;
+    height: auto;
+    cursor: pointer;
+    transition: transform 0.3s ease;
+}
+
+#btn-belajar, #btn-bermain {
+    position: absolute;
+    left: 45%;
+    width: 150px;
+    height: auto;
+    cursor: pointer;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+#btn-belajar {
+    top: 44%;
+}
+
+#btn-bermain {
+    top: 62%;
+}
+
+
+#btn-kembali:hover, #volume-btn:hover, #btn-belajar:hover, #btn-bermain:hover {
+    transform: scale(1.2);
+    filter: drop-shadow(8px 8px 10px blue);
+    -webkit-filter: drop-shadow(8px 8px 10px blue);
+}
