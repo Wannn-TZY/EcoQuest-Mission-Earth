@@ -1,0 +1,70 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html, body {
+    height: 100%;
+    width: 100%;
+    overflow: hidden;
+}
+
+body {
+    background-image: url("../../Asset/InformasiOrganik.jpg");
+    background-size: cover;
+    background-position: center 5%;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.Catatan-Organik {
+    width: 60%;
+    color: black;
+    padding: 25px;
+    border-radius: 15px;
+    font-size: 25px;
+    text-align: justify;
+    font-family: Arial, sans-serif;
+    position: absolute;
+    top: 35%;
+    left: 5%;
+}
+
+
+.container {
+    position: absolute;
+    bottom: 10%;
+    left: 10%;
+    display: flex;
+    gap: 20px;
+    
+}
+
+.Kembali {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    width: 60px;
+    height: 60px;
+    cursor: pointer;
+    transition: transform 0.2s;
+}
+
+.selanjutnya {
+    width: 60px;
+    height: 60px;
+    position: absolute;
+    bottom: 3px;
+    left: 600px;
+    cursor: pointer;
+    
+}
+
+.Kembali:hover, .selanjutnya:hover {
+    transform: scale(1.1);
+}
