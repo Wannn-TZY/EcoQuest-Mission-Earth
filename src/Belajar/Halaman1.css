@@ -36,10 +36,14 @@ body {
 }
 
 
-.container {
+.selanjutnya{
+    width: 60px;
+    height: 60px;
+    cursor: pointer;
+    transition: transform 0.2s;
     position: absolute;
-    bottom: 10%;
-    left: 10%;
+    top: 88%;
+    left: 55%;
     display: flex;
     gap: 20px;
     
@@ -55,15 +59,7 @@ body {
     transition: transform 0.2s;
 }
 
-.selanjutnya {
-    width: 60px;
-    height: 60px;
-    position: absolute;
-    bottom: 3px;
-    left: 600px;
-    cursor: pointer;
-    
-}
+
 
 .Kembali:hover, .selanjutnya:hover {
     transform: scale(1.1);
