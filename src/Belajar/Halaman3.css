@@ -22,16 +22,16 @@ body {
     justify-content: center;
 }
 
-.Catatan-Anoganik {
+.Catatan-B3 {
     width: 60%;
     color: black;
     padding: 25px;
     border-radius: 15px;
-    font-size: 25px;
+    font-size: 20px;
     text-align: justify;
     font-family: Arial, sans-serif;
     position: absolute;
-    top: 35%;
+    top: 33%;
     left: 5%;
 }
 
