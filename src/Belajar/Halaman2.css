@@ -35,8 +35,9 @@ body {
     left: 5%;
 }
 
-.Catatan-Organik span{
+.Catatan-Anorganik span{
     color: rgb(223, 196, 62);
+    font-weight: bold;
 }
 
 

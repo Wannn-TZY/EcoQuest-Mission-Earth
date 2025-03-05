@@ -22,34 +22,25 @@ body {
     justify-content: center;
 }
 
-.Catatan-Organik {
+
 
 .Catatan-B3 {
-
     width: 60%;
     color: black;
     padding: 25px;
     border-radius: 15px;
-    font-size: 25px;
+    font-size: 22px;
     text-align: justify;
     font-family: Arial, sans-serif;
     position: absolute;
-    top: 35%;
-    left: 5%;
+    top: 32%;
+    left: 3%;
 }
 
-.Catatan-Organik span{
-            color: red;
-        }
-
-    font-size: 20px;
-    text-align: justify;
-    font-family: Arial, sans-serif;
-    position: absolute;
-    top: 33%;
-    left: 5%;
+.Catatan-B3 span{
+    color: red;
+    font-weight: bold;
 }
-
 
 .selanjutnya{
     width: 60px;
