@@ -48,8 +48,14 @@ body {
     transform: scale(1.1);
 }
 
-#volume-btn:hover, #start-btn:hover {
+ #start-btn:hover {
     transform: scale(1.2);
-    filter: drop-shadow(8px 8px 10px blue);
-    -webkit-filter: drop-shadow(8px 8px 10px blue);
+    filter: drop-shadow(8px 8px 10px rgb(0, 183, 255));
+    -webkit-filter: drop-shadow(8px 8px 10px rgb(0, 183, 255));
+}
+
+#volume-btn:hover{
+    transform: scale(1.2);
+    filter: drop-shadow(8px 8px 10px rgb(185, 186, 186));
+    -webkit-filter: drop-shadow(8px 8px 10px rgb(185, 186, 186));
 }

@@ -11,7 +11,7 @@ html, body {
 }
 
 body {
-    background-image: url("../../Asset/InformasiOrganik.jpg");
+    background-image: url("../../Asset/InformasiSampahB3.jpg");
     background-size: cover;
     background-position: center 5%;
     background-repeat: no-repeat;
@@ -36,22 +36,9 @@ body {
 }
 
 .Catatan-Organik span{
-    color: rgb(48, 110, 44);
-}
+            color: red;
+        }
 
-
-.selanjutnya{
-    width: 60px;
-    height: 60px;
-    cursor: pointer;
-    transition: transform 0.2s;
-    position: absolute;
-    top: 88%;
-    left: 55%;
-    display: flex;
-    gap: 20px;
-    
-}
 
 .Kembali {
     position: absolute;
@@ -63,8 +50,22 @@ body {
     transition: transform 0.2s;
 }
 
+.KembaliBelajar {
+    width: 60px;
+    height: 60px;
+    cursor: pointer;
+    transition: transform 0.2s;
+    position: absolute;
+    top: 88%;
+    left: 10%;
+    display: flex;
+    gap: 20px;   
+}
 
-
-.Kembali:hover, .selanjutnya:hover {
+.Kembali:hover, .selanjutnya:hover, .KembaliBelajar:hover{
     transform: scale(1.1);
+    -webkit-transform: scale(1.1);
+    -moz-transform: scale(1.1);
+    -ms-transform: scale(1.1);
+    -o-transform: scale(1.1);
 }

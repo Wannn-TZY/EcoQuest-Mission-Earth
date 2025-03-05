@@ -2,7 +2,7 @@ const volumeBtn = document.getElementById("volume-btn");
 const bgMusic = document.getElementById("bg-music");
 
 let volumeAktif = true; 
-    let audio = new Audio("../Asset/BackgroundMusic.mp3"); 
+    let audio = new Audio("backsound_game_tambahan.mp3"); 
     audio.loop = true;
     audio.play(); 
 
@@ -23,4 +23,8 @@ document.addEventListener("DOMContentLoaded", () => {
     StartBtn.addEventListener("click", () => {
         window.location.href = "../TampilanUtama/TampilanUtama.html";
     });
+
+    const suaraMenu = document.getElementById('suaraMenu');
+
+
 });
