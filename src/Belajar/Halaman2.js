@@ -1,4 +1,4 @@
-document.addEventListener("DOMContentLoaded", function() {
+document.addEventListener("DOMContentLoaded", function() {                            
     const btnBelajarKembali = document.getElementById("btn-KembaliBelajar");
     const btnKembali = document.getElementById("btn-kembali");
     const btnSelanjutnya = document.getElementById("btn-SelanjutnyaBelajar");

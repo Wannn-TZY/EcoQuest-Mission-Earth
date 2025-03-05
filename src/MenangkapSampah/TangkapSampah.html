@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="id">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,7 +7,32 @@
     <title>EcoQuest: Mission Earth</title>
 </head>
 <body>
-    
+    <div class="game-container">
+        <!-- Game UI -->
+        <div class="game-ui">
+            <div class="score">Score: <span id="score">0</span></div>
+            <div class="timer">Time: <span id="timer">60</span></div>
+            <div class="lives">Lives: <span id="lives">3</span></div>
+        </div>
+
+        <!-- Game Area -->
+        <div id="game-area">
+            <img src="../../Asset/TempatSampah.jpg" id="trash-bin" alt="Tempat Sampah">
+        </div>
+
+        <!-- Control Buttons -->
+        <img src="../../Asset/TombolKembali.jpg" id="btn-kembali" class="kembali" alt="Kembali">
+        <img src="../../Asset/VolumeAktif.jpg" id="btn-volume" class="volume" alt="Volume">
+    </div>
+
+    <!-- Victory Popup -->
+    <div id="victory-popup" class="popup hidden">
+        <img src="../../Asset/PapanScore.png" alt="Score Board">
+        <div class="final-score">Score: <span id="final-score">0</span></div>
+        <button id="play-again">Main Lagi</button>
+        <button id="back-to-menu">Menu Utama</button>
+    </div>
+
     <script src="TangkapSampah.js"></script>
 </body>
 </html>

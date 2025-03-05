@@ -23,6 +23,9 @@ body {
 }
 
 .Catatan-Organik {
+
+.Catatan-B3 {
+
     width: 60%;
     color: black;
     padding: 25px;
@@ -38,6 +41,28 @@ body {
 .Catatan-Organik span{
             color: red;
         }
+
+    font-size: 20px;
+    text-align: justify;
+    font-family: Arial, sans-serif;
+    position: absolute;
+    top: 33%;
+    left: 5%;
+}
+
+
+.selanjutnya{
+    width: 60px;
+    height: 60px;
+    cursor: pointer;
+    transition: transform 0.2s;
+    position: absolute;
+    top: 88%;
+    left: 55%;
+    display: flex;
+    gap: 20px;
+    
+}
 
 
 .Kembali {
