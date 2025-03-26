@@ -54,25 +54,157 @@ body {
     z-index: 150;
 }
 
-
+/* Base popup styles */
 .popup {
     position: fixed;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    background: white;
-    padding: 20px;
-    border-radius: 10px;
-    text-align: center;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+
+/* Victory popup specific style */
+#victory-popup {
+    background-color: rgba(0, 0, 0, 0.8);
+    backdrop-filter: blur(5px);
+}
+
+/* Game over popup specific style */
+#gameover-popup {
+    background: none;
+    backdrop-filter: none;
+}
+
+/* Remove the border radius from game over popup background */
+#gameover-popup .popup-bg {
+    border-radius: 0;
+}
+
+/* Enhanced Popup Styles */
+.popup {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.8);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+    backdrop-filter: blur(5px);
+}
+
+.popup.hidden {
     display: none;
 }
 
-.popup img {
-    width: 300px;
+.popup-content {
+    position: relative;
+    width: 80%; /* Reduced from 90% */
+    max-width: 500px; /* Reduced from 600px */
+    animation: popupAppear 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+    transform-origin: center;
+    /* Removed box-shadow */
+}
+
+.popup-bg {
+    width: 100%;
+    height: auto;
+    display: block;
+    border-radius: 0;
+    -webkit-border-radius: 0;
+    -moz-border-radius: 0;
+    -ms-border-radius: 0;
+    -o-border-radius: 0;
+}
+
+.final-score {
+    position: absolute;
+    top: 80%; /* Adjusted from 40% to move score lower */
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 1.5em; /* Reduced from 1.8em for smaller size */
+    font-weight: bold;
+    color: #333;
+    text-shadow: 
+        2px 2px 0 #fff,
+        -2px -2px 0 #fff,
+        2px -2px 0 #fff,
+        -2px 2px 0 #fff;
+    animation: scoreAppear 0.5s ease-out 0.3s both;
+}
+
+.popup-buttons {
+    position: absolute;
+    bottom: 8%; /* Adjusted from 10% */
+    left: 0;
+    right: 0;
+    display: flex;
+    justify-content: center;
+    gap: 30px; /* Reduced from 40px */
+    animation: buttonsAppear 0.5s ease-out 0.5s both;
+}
+
+.popup-button {
+    width: 120px; /* Reduced from 130px */
+    height: auto;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    /* Removed filter drop-shadow */
+}
+
+.popup-button:hover {
+    transform: scale(1.1) translateY(-5px);
+    /* Removed filter drop-shadow */
+}
+
+.popup-button:active {
+    transform: scale(0.95);
 }
 
 .hidden {
     display: none;
+}
+
+@keyframes popupAppear {
+    0% {
+        transform: scale(0.7);
+        opacity: 0;
+    }
+    50% {
+        transform: scale(1.05);
+    }
+    100% {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
+@keyframes scoreAppear {
+    from {
+        opacity: 0;
+        transform: translate(-50%, -35%);
+    }
+    to {
+        opacity: 1;
+        transform: translate(-50%, -50%);
+    }
+}
+
+@keyframes buttonsAppear {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
 
 .kembali, .volume {
