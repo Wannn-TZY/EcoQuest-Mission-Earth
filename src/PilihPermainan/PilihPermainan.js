@@ -32,7 +32,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
     // Navigasi ke masing-masing game
     btnBersihkanSungai.addEventListener("click", function () {
-        window.location.href = "../sungai/bersihkansungai.html";
+        window.location.href = "../BersihkanSungai/Penjelasan.html";
     });
 
     btnMemilihSampah.addEventListener("click", function () {
