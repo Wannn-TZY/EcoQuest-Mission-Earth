@@ -99,10 +99,10 @@ document.addEventListener('DOMContentLoaded', () => {
     document.getElementById('play-again').addEventListener('click', resetGame);
     document.getElementById('play-again-lose').addEventListener('click', resetGame);
     document.getElementById('back-to-menu').addEventListener('click', () => {
-        window.location.href = '../../index.html';
+        window.location.href = '../PilihPermainan/PilihPermainan.html';
     });
     document.getElementById('back-to-menu-lose').addEventListener('click', () => {
-        window.location.href = '../../index.html';
+        window.location.href = '../PilihPermainan/PilihPermainan.html';
     });
 
     function updateLives() {
