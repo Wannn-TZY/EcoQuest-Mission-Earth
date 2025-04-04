@@ -1,0 +1,73 @@
+body {
+    margin: 0;
+    padding: 0;
+    width: 100vw;
+    height: 100vh;
+    font-family: Arial, sans-serif;
+    background: url('../../Asset/PenjelasanPilahSampah.jpg') no-repeat center center/cover;
+}
+
+.penjelasan {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 80%;
+    max-width: 800px;
+    background: rgba(255, 255, 255, 0.9);
+    padding: 2rem;
+    border-radius: 20px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
+    font-size: 1.1rem;
+    line-height: 1.6;
+    color: #34495e;
+    text-align: center;
+}
+
+.container {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+}
+
+#btn-selanjutnya {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    width: 120px;  /* Increased from 50px */
+    height: 80px;  /* Increased from 50px */
+    cursor: pointer;
+    pointer-events: auto;
+    transition: transform 0.2s ease;
+    object-fit: contain; /* Ensures image maintains aspect ratio */
+}
+
+#volume-btn {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    width: 50px;
+    height: 50px;
+    cursor: pointer;
+    pointer-events: auto;
+    transition: transform 0.2s ease;
+}
+
+#btn-selanjutnya:hover,
+#volume-btn:hover {
+    transform: scale(1.1);
+}
+
+@media (max-width: 768px) {
+    .penjelasan {
+        width: 90%;
+        padding: 1.5rem;
+        font-size: 1rem;
+    }
+    
+    #btn-selanjutnya {
+        width: 100px; /* Slightly smaller on mobile */
+        height: 70px;
+    }
+}
