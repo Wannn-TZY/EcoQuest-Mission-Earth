@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EcoQuest - Pilah Sampah</title>
+    <link rel="stylesheet" href="PilahSampah.css">
+</head>
+<body>
+    <div class="game-container">
+        <div class="status-bar">
+            <div class="timer">Waktu: <span id="time">60</span></div>
+            <div class="lives">Nyawa: <span id="lives">3</span></div>
+            <div class="score">Skor: <span id="score">0</span></div>
+        </div>
+        
+        <div id="game-area">
+            <!-- Trash items will be generated here -->
+        </div>
+
+        <div class="trash-bins">
+            <div class="bin" id="dangerous-bin">
+                <img src="../../Asset/TempatSampahBerbahaya.jpg" alt="Tempat Sampah Berbahaya">
+                <p>Berbahaya</p>
+            </div>
+            <div class="bin" id="inorganic-bin">
+                <img src="../../Asset/TempatSampahAnorganik.jpg" alt="Tempat Sampah Anorganik">
+                <p>Anorganik</p>
+            </div>
+            <div class="bin" id="organic-bin">
+                <img src="../../Asset/TempatSampahOrganik.jpg" alt="Tempat Sampah Organik">
+                <p>Organik</p>
+            </div>
+        </div>
+    </div>
+
+    <div id="victory-popup" class="popup hidden">
+        <div class="popup-content">
+            <img src="../../Asset/PopUpKemenangan.jpg" class="popup-bg" alt="Popup Kemenangan">
+            <div class="final-score">Score: <span id="final-score">0</span></div>
+            <div class="popup-buttons">
+                <img src="../../Asset/TombolCobaLagiPopUp.jpg" id="play-again" class="popup-button" alt="Coba Lagi">
+                <img src="../../Asset/TombolHomePopUp.jpg" id="back-to-menu" class="popup-button" alt="Menu Utama">
+            </div>
+        </div>
+    </div>
+
+    <!-- Game Over Popup -->
+    <div id="gameover-popup" class="popup hidden">
+        <div class="popup-content">
+            <img src="../../Asset/PopUpKekalahan.png" class="popup-bg" alt="Popup Kekalahan">
+            <div class="final-score">Score: <span id="final-score-lose">0</span></div>
+            <div class="popup-buttons">
+                <img src="../../Asset/TombolCobaLagiPopUp.jpg" id="play-again-lose" class="popup-button" alt="Coba Lagi">
+                <img src="../../Asset/TombolHomePopUp.jpg" id="back-to-menu-lose" class="popup-button" alt="Menu Utama">
+            </div>
+        </div>
+    </div>
+    <script src="PilahSampah.js"></script>
+</body>
+</html>
