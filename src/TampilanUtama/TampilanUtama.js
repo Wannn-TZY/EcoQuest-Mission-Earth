@@ -5,7 +5,7 @@ document.addEventListener("DOMContentLoaded", function () {
     const bermainBtn = document.getElementById("btn-bermain");
 
     let volumeAktif = true; 
-    let audio = new Audio("../Asset/BackgroundMusic.mp3"); 
+    let audio = new Audio("../../backsound/backsound-menu-utama.mp3"); 
     audio.loop = true;
     audio.play(); 
 

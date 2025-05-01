@@ -9,7 +9,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
     // Variabel status 
     let volumeAktif = true;
-    let audio = new Audio("../../Asset/BackgroundMusic.mp3");
+    let audio = new Audio("../../backsound/backsound-pilihan.mp3");
     audio.loop = true;
     audio.play();
 
@@ -35,12 +35,9 @@ document.addEventListener("DOMContentLoaded", function () {
         window.location.href = "../BersihkanSungai/Penjelasan.html";
     });
 
-    btnMemilihSampah.addEventListener("click", function () {
-        window.location.href = "memilihsampah.html";
-    });
 
     btnTangkapSampah.addEventListener("click", function () {
-        window.location.href = "../MenangkapSampah/penjelasan.html";
+        window.location.href = "../MenangkapSampah/Penjelasan.html";
     });
 
     btnPilahSampah.addEventListener("click", function () {

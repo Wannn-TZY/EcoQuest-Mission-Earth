@@ -38,6 +38,11 @@ body {
     left: 15%;
     width: 150px;
     cursor: pointer;
+    transition: transform 0.3s ease-in-out;
+}
+
+.sungai:hover {
+    transform: scale(1.1);
 }
 
 .pilihsampah {
@@ -46,6 +51,11 @@ body {
     right: 15%;
     width: 150px;
     cursor: pointer;
+    transition: transform 0.3s ease-in-out;
+}
+
+.pilihsampah:hover {
+    transform: scale(1.1);
 }
 
 .tangkapsampah {
@@ -59,6 +69,11 @@ body {
     -moz-transform: translateX(-50%);
     -ms-transform: translateX(-50%);
     -o-transform: translateX(-50%);
+    transition: transform 0.3s ease-in-out;
+}
+
+.tangkapsampah:hover {
+    transform: translateX(-50%) scale(1.1);
 }
 
 .PilahSampah {
@@ -67,4 +82,9 @@ body {
     right: 35%;
     width: 150px;
     cursor: pointer;
+    transition: transform 0.3s ease-in-out;
+}
+
+.PilahSampah:hover {
+    transform: scale(1.1);
 }

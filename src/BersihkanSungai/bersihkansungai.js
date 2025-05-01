@@ -1,4 +1,23 @@
 document.addEventListener('DOMContentLoaded', () => {
+    // Add background music setup
+    const backgroundMusic = new Audio('../../backsound/backsound-game1.mp3');
+    backgroundMusic.loop = true;
+    backgroundMusic.volume = 0.5;
+
+    backgroundMusic.addEventListener('error', (e) => {
+        console.log('Error loading audio:', e);
+    });
+
+    backgroundMusic.addEventListener('canplaythrough', () => {
+        console.log('Audio sudah siap diputar');
+    });
+
+    // Play background music after first user interaction
+    document.addEventListener('click', function initAudio() {
+        playBackgroundMusic();
+        document.removeEventListener('click', initAudio);
+    }, { once: true });
+
     const gameContainer = document.getElementById('gameContainer');
     const scoreElement = document.getElementById('score');
     const livesElement = document.getElementById('lives');
@@ -6,7 +25,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     let score = 0;
     let lives = 3;
-    let timeLeft = 60;
+    let timeLeft = 10;
     let gameInterval;
     let timerInterval;
 
@@ -42,7 +61,7 @@ document.addEventListener('DOMContentLoaded', () => {
         });
 
         let xPos = gameContainer.offsetWidth + 50; // Start beyond right edge
-        const speed = 3;
+        const speed = 5 ;
         
         const moveInterval = setInterval(() => {
             xPos -= speed; // Move left instead of right
@@ -59,7 +78,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }, 50);
     }
 
-    let gameTimer = 60;
+    let gameTimer = 10;
     let isGameActive = true;
 
     function showVictoryPopup() {
@@ -80,6 +99,11 @@ document.addEventListener('DOMContentLoaded', () => {
         lives = 3;
         gameTimer = 60;
         isGameActive = true;
+        
+        // Reset and play music
+        backgroundMusic.volume = 0.5;
+        backgroundMusic.currentTime = 0;
+        backgroundMusic.play();
         
         // Reset displays
         document.getElementById('score').textContent = `Score: ${score}`;
@@ -118,8 +142,8 @@ document.addEventListener('DOMContentLoaded', () => {
         // Reset game state
         score = 0;
         lives = 3;
-        timeLeft = 60;
-        gameTimer = 60;
+        timeLeft = 10;
+        gameTimer = 10;
         isGameActive = true;
         
         // Update display
@@ -154,9 +178,33 @@ document.addEventListener('DOMContentLoaded', () => {
         clearInterval(gameInterval);
         clearInterval(timerInterval);
         
+        // Fade out the music
+        const fadeOut = setInterval(() => {
+            if (backgroundMusic.volume > 0.1) {
+                backgroundMusic.volume -= 0.1;
+            } else {
+                backgroundMusic.pause();
+                backgroundMusic.volume = 0.5;
+                clearInterval(fadeOut);
+            }
+        }, 100);
+        
         // Remove all existing sampah
         const allSampah = document.querySelectorAll('.sampah');
         allSampah.forEach(sampah => gameContainer.removeChild(sampah));
+    }
+
+    function playBackgroundMusic() {
+        const playPromise = backgroundMusic.play();
+        if (playPromise !== undefined) {
+            playPromise
+                .then(() => {
+                    console.log("Musik berhasil diputar");
+                })
+                .catch(error => {
+                    console.log("Musik gagal diputar:", error);
+                });
+        }
     }
 
     startGame();

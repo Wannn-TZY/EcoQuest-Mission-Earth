@@ -29,15 +29,18 @@ body {
     border-radius: 15px;
     font-size: 25px;
     text-align: justify;
-    font-family: Arial, sans-serif;
+    font-family: 'Tahoma', cursive;
     position: absolute;
     top: 35%;
     left: 5%;
+  
 }
 
-.Catatan-Organik span{
-    font-weight: bold;
+.Catatan-Organik span {
+    font-family: 'Carter One', cursive;
+    font-weight: 800;
     color: rgb(48, 110, 44);
+    font-size: 1.1em;
 }
 
 

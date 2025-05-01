@@ -4,6 +4,9 @@ document.addEventListener("DOMContentLoaded", function () {
     const typedTextElement = document.getElementById("typed-text");
 
     let volumeAktif = true;
+    let audio = new Audio("../../backsound/backsound-game1.mp3");
+    audio.loop = true;
+    audio.play();
 
     // Text to be typed
     const textToType = "Ini adalah game Bersihkan sungai. Kamu diberikan nyawa sebanyak 3 untuk kesempatannya. Tujuan kamu adalah untuk membersihkan sampah yang mengalir didalam sungai dan membuat sungai bersih kembali. Kamu diberikan waktu selama 1 menit untuk membersihkannya.";
@@ -27,6 +30,12 @@ document.addEventListener("DOMContentLoaded", function () {
     // Event untuk tombol volume
     volumeBtn.addEventListener("click", function () {
         volumeAktif = !volumeAktif;
-        volumeBtn.src = volumeAktif ? "../../Asset/VolumeAktif.jpg" : "../../Asset/VolumeNonAktif.jpg";
+        if (volumeAktif) {
+            audio.play();
+            volumeBtn.src = "../../Asset/VolumeAktif.jpg";
+        } else {
+            audio.pause();
+            volumeBtn.src = "../../Asset/VolumeNonAktif.jpg";
+        }
     });
 });

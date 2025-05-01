@@ -10,7 +10,7 @@ window.onload = function () {
     
     let score = 0;
     let lives = 3;
-    let timer = 60;
+    let timer = 10;
     let gameInterval;
     let isGameRunning = true;
 
@@ -18,7 +18,7 @@ window.onload = function () {
     function initGame() {
         score = 0;
         lives = 3;
-        timer = 60;
+        timer = 10;
         isGameRunning = true;
         updateUI();
         startTimer();
@@ -79,7 +79,7 @@ window.onload = function () {
     function resetGame() {
         score = 0;
         lives = 3;
-        timer = 60;
+        timer = 10;
         isGameRunning = true;
         
         // Clear all trash elements
@@ -122,9 +122,6 @@ window.onload = function () {
             endGame('lives');
         }
     }
-
-    // Initialize game when page loads
-    window.addEventListener('load', initGame);
 
     let trashBinX = gameArea.clientWidth / 2; // Posisi awal tempat sampah
     const trashBinSpeed = 20; // Kecepatan tempat sampah
@@ -242,4 +239,7 @@ window.onload = function () {
     const spawnInterval = setInterval(() => {
         if (isGameRunning) spawnTrash();
     }, 1000);
+
+    // Panggil initGame sekali saja di akhir window.onload
+    initGame();
 };

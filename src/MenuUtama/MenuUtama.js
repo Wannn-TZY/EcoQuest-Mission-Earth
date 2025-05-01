@@ -2,7 +2,7 @@ const volumeBtn = document.getElementById("volume-btn");
 const bgMusic = document.getElementById("bg-music");
 
 let volumeAktif = true; 
-    let audio = new Audio("backsound_game_tambahan.mp3"); 
+    let audio = new Audio("../../backsound/backsound-menu-utama.mp3"); 
     audio.loop = true;
     audio.play(); 
 
