@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EcoQuest - Story Board</title>
+    <link rel="stylesheet" href="storyboard.css">
+    <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;600&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="game-container">
+        <div class="sound-controls">
+            <img src="../../Asset/VolumeAktif.jpg" alt="Volume" class="volume-button" id="volume-btn">
+            <div class="volume-slider-container">
+                <input type="range" id="volume-slider" min="0" max="100" value="100">
+            </div>
+        </div>
+
+        <div class="environment-elements">
+            <div class="clouds"></div>
+            <div class="birds"></div>
+            <div class="leaves"></div>
+        </div>
+        
+        <div class="message-container">
+            <div class="character-sprite"></div>
+            <div class="message-box">
+                <div class="typing-effect">
+                    <p id="story-text"></p>
+                </div>
+            </div>
+        </div>
+
+        <div class="controls">
+            <img src="../../Asset/TombolSelanjutnya.jpg" alt="Next" class="next-button" id="nextBtn">
+            
+        </div>
+    </div>
+    <script src="storyboard.js"></script>
+</body>
+</html>

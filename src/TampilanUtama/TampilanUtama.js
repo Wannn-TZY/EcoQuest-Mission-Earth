@@ -32,6 +32,6 @@ document.addEventListener("DOMContentLoaded", function () {
 
     // Tombol masuk ke halaman bermain
     bermainBtn.addEventListener("click", function () {
-        window.location.href = "../PilihPermainan/PilihPermainan.html";
+        window.location.href = "../Storyboard/storyboard.html";
     });
 });

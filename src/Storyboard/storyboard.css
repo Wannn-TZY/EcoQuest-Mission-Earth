@@ -1,0 +1,230 @@
+:root {
+    --primary-color: #4CAF50;
+    --secondary-color: #2196F3;
+    --text-color: #333;
+}
+
+.background {
+    background-image: url('../assets/natural-background.jpg');
+    background-size: cover;
+    background-position: center;
+    height: 100vh;
+    width: 100vw;
+    position: fixed;
+    top: 0;
+    left: 0;
+}
+
+.story-container {
+    height: 100vh;
+    width: 100vw;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+}
+
+.story-panel {
+    background-color: rgba(255, 255, 255, 0.9);
+    padding: 2rem;
+    border-radius: 15px;
+    width: 60%;
+    min-height: 200px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+#story-text {
+    font-size: 1.2em;
+    color: #333;
+    line-height: 1.5;
+    margin: 0;
+    text-align: center;
+}
+
+.next-button {
+    width: 180px;
+    cursor: pointer;
+    transition: transform 0.3s ease;
+    filter: drop-shadow(0 5px 15px rgba(0, 0, 0, 0.2));
+}
+
+.next-button:hover {
+    transform: scale(1.05) translateY(-5px);
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Quicksand', sans-serif;
+    overflow: hidden;
+}
+
+.game-container {
+    width: 100vw;
+    height: 100vh;
+    background: url('../../Asset/backgroundStoryboard.png') no-repeat center center;
+    background-size: cover;
+    position: relative;
+    overflow: hidden;
+}
+
+/* Environmental Elements Animation */
+.environment-elements {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+}
+
+.clouds {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: url('../../Asset/clouds.png') repeat-x;
+    animation: cloudMove 60s linear infinite;
+}
+
+.birds {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: url('../../Asset/birds.png') repeat-x;
+    animation: birdsMove 30s linear infinite;
+}
+
+.leaves {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: url('../../Asset/leaves.png') repeat;
+    animation: leavesFloat 15s linear infinite;
+}
+
+/* Message Box Styling */
+.message-container {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    padding-bottom: 100px;
+}
+
+.message-box {
+    background: rgba(255, 255, 255, 0.95);
+    padding: 30px;
+    border-radius: 20px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+    width: 80%;
+    max-width: 800px;
+    transform: translateY(-50px);
+    transition: all 0.3s ease;
+}
+
+.message-box:hover {
+    transform: translateY(-55px);
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+}
+
+.typing-effect p {
+    font-size: 1.3em;
+    line-height: 1.6;
+    margin: 0;
+    opacity: 0;
+    animation: fadeIn 0.5s ease forwards;
+}
+
+/* Controls Styling */
+.controls {
+    position: absolute;
+    bottom: 30px;
+    right: 30px;
+    display: flex;
+    gap: 20px;
+    align-items: center;
+}
+
+/* Update the sound-controls styling */
+.sound-controls {
+    position: absolute;
+    top: 20px;  /* Changed from bottom positioning */
+    right: 20px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    z-index: 100;  /* Ensure it stays on top of other elements */
+}
+
+.volume-button {
+    width: 40px;
+    height: 40px;
+    cursor: pointer;
+    transition: transform 0.3s ease;
+}
+
+.volume-button:hover {
+    transform: scale(1.1);
+}
+
+.volume-slider-container {
+    position: absolute;
+    right: 50px;  /* Adjust position relative to volume button */
+    top: 50%;
+    transform: translateY(-50%);
+    width: 100px;
+    background: rgba(255, 255, 255, 0.9);
+    padding: 5px;
+    border-radius: 10px;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.sound-controls:hover .volume-slider-container {
+    opacity: 1;
+}
+
+#volume-slider {
+    width: 100%;
+    height: 5px;
+    -webkit-appearance: none;
+    background: #4CAF50;
+    border-radius: 5px;
+    outline: none;
+}
+
+#volume-slider::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    width: 15px;
+    height: 15px;
+    background: #fff;
+    border: 2px solid #4CAF50;
+    border-radius: 50%;
+    cursor: pointer;
+}
+
+/* Animations */
+@keyframes cloudMove {
+    from { background-position: 0 0; }
+    to { background-position: 1000px 0; }
+}
+
+@keyframes birdsMove {
+    from { background-position: -100% 20%; }
+    to { background-position: 100% 20%; }
+}
+
+@keyframes leavesFloat {
+    from { background-position: 0 0; }
+    to { background-position: 100px 100px; }
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* Dekorasi background */
+.game-container::before {
+    display: none; /* Remove the old background-elements.png */
+}
