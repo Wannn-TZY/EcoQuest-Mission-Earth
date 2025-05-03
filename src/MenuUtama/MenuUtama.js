@@ -21,7 +21,7 @@ let volumeAktif = true;
 document.addEventListener("DOMContentLoaded", () => { 
     const StartBtn = document.getElementById("start-btn");
     StartBtn.addEventListener("click", () => {
-        window.location.href = "../TampilanUtama/TampilanUtama.html";
+        window.location.href = "../Storyboard/storyboard.html";
     });
 
     const suaraMenu = document.getElementById('suaraMenu');

@@ -22,7 +22,7 @@ document.addEventListener("DOMContentLoaded", function () {
     });
 
     kembaliBtn.addEventListener("click", function () {
-        window.location.href = "../MenuUtama/MenuUtama.html";
+        window.location.href = "../Storyboard/storyboard.html";
     });
 
     // Tombol masuk ke halaman belajar
@@ -32,6 +32,6 @@ document.addEventListener("DOMContentLoaded", function () {
 
     // Tombol masuk ke halaman bermain
     bermainBtn.addEventListener("click", function () {
-        window.location.href = "../Storyboard/storyboard.html";
+        window.location.href = "../PilihPermainan/PilihPermainan.html";
     });
 });
