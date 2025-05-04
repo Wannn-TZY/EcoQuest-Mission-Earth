@@ -42,16 +42,6 @@
     text-align: center;
 }
 
-.next-button {
-    width: 180px;
-    cursor: pointer;
-    transition: transform 0.3s ease;
-    filter: drop-shadow(0 5px 15px rgba(0, 0, 0, 0.2));
-}
-
-.next-button:hover {
-    transform: scale(1.05) translateY(-5px);
-}
 
 .TombolKembali {
     margin-left: 2px;
@@ -134,7 +124,7 @@ body {
 }
 
 .prev-button {
-    width: 180px;
+    width: 300PX;
     cursor: pointer;
     transition: transform 0.3s ease;
     filter: drop-shadow(0 5px 15px rgba(0, 0, 0, 0.2));
@@ -145,7 +135,7 @@ body {
 }
 
 .next-button {
-    width: 180px;
+    width: 130px;
     cursor: pointer;
     transition: transform 0.3s ease;
     filter: drop-shadow(0 5px 15px rgba(0, 0, 0, 0.2));

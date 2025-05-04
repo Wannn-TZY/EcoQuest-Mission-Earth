@@ -1,0 +1,73 @@
+body {
+    margin: 0;
+    padding: 0;
+    width: 100vw;
+    height: 100vh;
+    font-family: 'Arial', sans-serif;
+    background: #67b1d6;
+    color: rgb(0, 0, 0);
+    overflow: hidden;
+}
+
+.cutscene-container {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: url('../../Asset/LatarGameBersihkanSungai.jpg') no-repeat center center/cover;
+    position: relative;
+}
+
+.text-container {
+    background: rgba(255, 255, 255, 0.7);
+    padding: 2rem;
+    border-radius: 15px;
+    max-width: 800px;
+    text-align: center;
+    opacity: 0;
+    transform: translateY(20px);
+    animation: fadeInUp 1s forwards;
+}
+
+.text-line {
+    margin: 1.5rem 0;
+    font-size: 1.2rem;
+    line-height: 1.6;
+    opacity: 0;
+}
+
+#btn-next {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    padding: 15px 30px;
+    background: #4CAF50;
+    color: rgb(17, 16, 16);
+    border: none;
+    border-radius: 25px;
+    cursor: pointer;
+    font-size: 1.1rem;
+    opacity: 0;
+    transition: transform 0.3s ease;
+}
+
+#btn-next:hover {
+    transform: scale(1.1);
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
