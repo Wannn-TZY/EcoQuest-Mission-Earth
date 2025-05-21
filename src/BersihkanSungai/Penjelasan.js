@@ -2,6 +2,7 @@ document.addEventListener("DOMContentLoaded", function () {
     const btnSelanjutnya = document.getElementById("btn-selanjutnya");
     const volumeBtn = document.getElementById("volume-btn");
     const typedTextElement = document.getElementById("typed-text");
+    const kembali = document.getElementById("btn-kembali"); // Add this line
 
     let volumeAktif = true;
     let audio = new Audio("../../backsound/backsound-game1.mp3");
@@ -25,6 +26,21 @@ document.addEventListener("DOMContentLoaded", function () {
     // Event untuk tombol selanjutnya
     btnSelanjutnya.addEventListener("click", function () {
         window.location.href = "bersihkansungai.html";
+    });
+
+    // Event untuk tombol kembali
+    kembali.addEventListener("click", function() {
+        // Add fade out effect
+        document.querySelector('.game-container').style.opacity = 0;
+        
+        // Stop the audio before navigating
+        audio.pause();
+        audio.currentTime = 0;
+        
+        // Navigate back with delay for transition
+        setTimeout(() => {
+            window.location.href = "../PilihPermainan/PilihPermainan.html";
+        }, );
     });
 
     // Event untuk tombol volume

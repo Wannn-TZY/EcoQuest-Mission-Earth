@@ -1,6 +1,8 @@
 document.addEventListener("DOMContentLoaded", function() {
     const storyText = document.getElementById("story-text");
     const nextBtn = document.getElementById("nextBtn");
+    const prevBtn = document.getElementById("prevBtn");
+    const kembali = document.getElementById("btn-kembali");
     const volumeBtn = document.getElementById("volume-btn");
     const volumeSlider = document.getElementById("volume-slider");
     
@@ -59,11 +61,41 @@ document.addEventListener("DOMContentLoaded", function() {
             // Add transition effect
             document.querySelector('.game-container').style.opacity = 0;
             setTimeout(() => {
-                window.location.href = "../PilihPermainan/PilihPermainan.html";
-            }, 1000);
+                window.location.href = "../Tampilanutama/Tampilanutama.html";
+            }, );
         } else {
             updateStory();
         }
+    });
+
+    // Add previous button functionality
+    prevBtn.addEventListener("click", function() {
+        if (isTyping) {
+            isTyping = false;
+            storyText.textContent = stories[currentStory];
+            return;
+        }
+
+        currentStory--;
+        if (currentStory < 0) {
+            // If at first story, stay there
+            currentStory = 0;
+        }
+        updateStory();
+    });
+
+    kembali.addEventListener("click", function() {
+        // Add fade out effect
+        document.querySelector('.game-container').style.opacity = 0;
+        
+        // Stop the audio before navigating
+        audio.pause();
+        audio.currentTime = 0;
+        
+        // Navigate back with delay for transition
+        setTimeout(() => {
+            window.location.href = "../MenuUtama/MenuUtama.html";
+        }, );
     });
 
     volumeBtn.addEventListener("click", function() {
