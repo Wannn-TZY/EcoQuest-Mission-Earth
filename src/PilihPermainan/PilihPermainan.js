@@ -37,7 +37,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
 
     btnTangkapSampah.addEventListener("click", function () {
-        window.location.href = "../MenangkapSampah/Penjelasan.html";
+        window.location.href = "../MenangkapSampah/cutscene.html";
     });
 
     btnPilahSampah.addEventListener("click", function () {

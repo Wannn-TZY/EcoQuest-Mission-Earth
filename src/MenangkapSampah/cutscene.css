@@ -1,0 +1,79 @@
+body {
+    margin: 0;
+    padding: 0;
+    width: 100vw;
+    height: 100vh;
+    font-family: 'Arial', sans-serif;
+    background: #67b1d6;
+    color: #222;
+    overflow: hidden;
+}
+
+.cutscene-container {
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: url('../../Asset/BackgroundMenangkapSampah.jpg') no-repeat center center/cover;
+    position: relative;
+    flex-direction: column;
+    text-align: center;
+}
+
+.text-container {
+    background: rgba(255,255,255,0.85);
+    padding: 2rem 2.5rem;
+    border-radius: 18px;
+    max-width: 700px;
+    box-shadow: 0 0 24px rgba(0,0,0,0.25);
+    font-size: 1.25rem;
+    line-height: 1.7;
+    animation: fadeInUp 1s forwards;
+    margin-bottom: 20px;
+    transition: min-height 0.3s;
+}
+
+#btn-next, #btn-skip {
+    padding: 12px 28px;
+    border: none;
+    border-radius: 25px;
+    cursor: pointer;
+    font-size: 1.1rem;
+    transition: transform 0.3s, opacity 0.5s;
+}
+
+#btn-next {
+    margin-top: 18px;
+    background: #2196F3;
+    color: white;
+    opacity: 0;
+}
+
+#btn-next:hover {
+    transform: scale(1.08);
+}
+
+#btn-skip {
+    position: absolute;
+    top: 22px;
+    left: 22px;
+    background: #f44336;
+    color: white;
+    opacity: 0.85;
+}
+
+#btn-skip:hover {
+    transform: scale(1.05);
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
