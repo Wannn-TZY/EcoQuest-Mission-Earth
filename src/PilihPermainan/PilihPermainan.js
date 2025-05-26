@@ -41,7 +41,7 @@ document.addEventListener("DOMContentLoaded", function () {
     });
 
     btnPilahSampah.addEventListener("click", function () {
-        window.location.href = "../PilahSampah/Penjelasan.html";
+        window.location.href = "../PilahSampah/cutscene.html";
     });
 
     // Efek hover untuk membuat tombol lebih interaktif

@@ -4,7 +4,7 @@ document.addEventListener('DOMContentLoaded', () => {
         "🧺 Tugasmu adalah menangkap sampah dengan jaring sebelum sampah jatuh ke daratan.",
         "⚡️ Hati-hati! Jangan sampai sampah jatuh ke daratan, karena itu akan mengurangi nyawamu.",
         "⏱️ Tangkap sebanyak mungkin sampah dalam waktu yang terbatas untuk menjaga lingkungan tetap bersih!",
-        "🌟 Siap jadi pahlawan sungai? Ayo mulai petualanganmu sekarang!"
+        "🌟 Siap jadi pahlawan kebersihan? Ayo mulai petualanganmu sekarang!"
     ];
 
     const container = document.getElementById('text-container');
