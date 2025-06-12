@@ -89,7 +89,6 @@ h1 {
     text-transform: uppercase;
     letter-spacing: 2px;
     background: linear-gradient(120deg, #3987db 0%, #8fd3f4 100%);
-    -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
     animation: fadeIn 1.5s ease-in-out;
