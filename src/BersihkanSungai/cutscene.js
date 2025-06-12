@@ -1,14 +1,3 @@
-<<<<<<< HEAD
-document.addEventListener('DOMContentLoaded', function() {
-    const lines = document.querySelectorAll('.text-line');
-    const nextButton = document.getElementById('btn-selanjutnya');
-    
-    lines.forEach((line, index) => {
-        setTimeout(() => {
-            line.style.animation = 'fadeIn 1s forwards';
-        }, index * 2000); // Each line appears after 2 seconds
-    });
-=======
 document.addEventListener('DOMContentLoaded', () => {
     const lines = [
         "🌊 Sungai yang dulu bersih dan jadi sumber kehidupan, kini dipenuhi sampah dan tercemar. Ikan-ikan menghilang 🐟, airnya bau 😷, dan desa pun terdampak.",
@@ -16,26 +5,25 @@ document.addEventListener('DOMContentLoaded', () => {
         "🧹 Tugasmu: kumpulkan sampah 🗑️, hindari rintangan ⚠️, dan pulihkan sungai sebelum semuanya terlambat ⏳.",
         "💪 Bersihkan sungai. 🌱 Selamatkan masa depan!"
     ];
->>>>>>> f7ba071da5c7f2dc1d08c85b4410d2a391c7e263
 
     const container = document.getElementById('text-container');
-    const nextButton = document.getElementById('btn-next');
+    const nextButton = document.getElementById('btn-selanjutnya');
     const skipButton = document.getElementById('btn-skip');
 
     let currentLine = 0;
     let isSkipped = false;
 
-    nextButton.style.opacity = 0;
-
     function typeLine(text, callback) {
-        let i = 0;
         const p = document.createElement('p');
         p.className = 'text-line';
         container.appendChild(p);
 
+        let i = 0;
         const typing = setInterval(() => {
             if (isSkipped) {
                 clearInterval(typing);
+                p.innerHTML = text;
+                if (callback) callback();
                 return;
             }
             if (i < text.length) {
@@ -52,15 +40,19 @@ document.addEventListener('DOMContentLoaded', () => {
         if (currentLine < lines.length) {
             typeLine(lines[currentLine], () => {
                 currentLine++;
-                setTimeout(showNextLine, 500);
+                if (currentLine === lines.length) {
+                    nextButton.style.display = 'block';
+                } else {
+                    setTimeout(showNextLine, 500);
+                }
             });
-        } else {
-            setTimeout(() => {
-                nextButton.style.opacity = 1;
-            }, 500);
         }
     }
 
+    // Sembunyikan tombol selanjutnya di awal
+    nextButton.style.display = 'none';
+
+    // Jalankan animasi cutscene
     showNextLine();
 
     nextButton.addEventListener('click', () => {
@@ -69,6 +61,13 @@ document.addEventListener('DOMContentLoaded', () => {
 
     skipButton.addEventListener('click', () => {
         isSkipped = true;
-        window.location.href = 'Penjelasan.html';
+        container.innerHTML = '';
+        lines.forEach(line => {
+            const p = document.createElement('p');
+            p.className = 'text-line';
+            p.innerHTML = line;
+            container.appendChild(p);
+        });
+        nextButton.style.display = 'block';
     });
 });
