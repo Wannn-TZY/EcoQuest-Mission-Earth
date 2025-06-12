@@ -1,24 +1,9 @@
-document.addEventListener('DOMContentLoaded', function() {
-    const lines = document.querySelectorAll('.text-line');
-    const nextButton = document.getElementById('btn-selanjutnya');
-    
-    lines.forEach((line, index) => {
-        setTimeout(() => {
-            line.style.animation = 'fadeIn 1s forwards';
-        }, index * 2000); // Each line appears after 2 seconds
-    });
-
-    // Show next button after all lines are displayed
-    setTimeout(() => {
-        nextButton.style.animation = 'fadeIn 1s forwards';
-    }, (lines.length * 2000));
 document.addEventListener('DOMContentLoaded', () => {
     const lines = [
-        "🌤️ Sampah-sampah mulai berjatuhan dari atas ke sungai dan daratan!",
-        "🧺 Tugasmu adalah menangkap sampah dengan jaring sebelum sampah jatuh ke daratan.",
-        "⚡️ Hati-hati! Jangan sampai sampah jatuh ke daratan, karena itu akan mengurangi nyawamu.",
-        "⏱️ Tangkap sebanyak mungkin sampah dalam waktu yang terbatas untuk menjaga lingkungan tetap bersih!",
-        "🌟 Siap jadi pahlawan kebersihan? Ayo mulai petualanganmu sekarang!"
+        "🏙️ Taman yang dulu indah kini dipenuhi sampah.",
+        "🌧️ Saking parahnya, sampah kayak hujan dari langit",
+        "🌫️ bikin udara kotor dan semua makhluk pergi.",
+        "🎯 Sekarang tugasmu: bersihkan taman, hentikan hujan sampah, dan kembalikan keindahan yang hilang! 🌿"
     ];
 
     const container = document.getElementById('text-container');
@@ -31,8 +16,6 @@ document.addEventListener('DOMContentLoaded', () => {
     function typeLine(text, callback) {
         const p = document.createElement('p');
         p.className = 'text-line';
-        p.style.opacity = '0';
-        p.style.transform = 'translateY(20px)';
         container.appendChild(p);
 
         let i = 0;
@@ -40,8 +23,6 @@ document.addEventListener('DOMContentLoaded', () => {
             if (isSkipped) {
                 clearInterval(typing);
                 p.innerHTML = text;
-                p.style.opacity = '1';
-                p.style.transform = 'translateY(0)';
                 if (callback) callback();
                 return;
             }
@@ -49,8 +30,6 @@ document.addEventListener('DOMContentLoaded', () => {
                 p.innerHTML += text.charAt(i);
                 i++;
             } else {
-                p.style.opacity = '1';
-                p.style.transform = 'translateY(0)';
                 clearInterval(typing);
                 if (callback) callback();
             }
@@ -63,19 +42,19 @@ document.addEventListener('DOMContentLoaded', () => {
                 currentLine++;
                 if (currentLine === lines.length) {
                     nextButton.style.display = 'block';
+                } else {
+                    setTimeout(showNextLine, 500);
                 }
-                setTimeout(showNextLine, 500);
             });
         }
     }
 
-    // Hide next button initially
+    // Sembunyikan tombol selanjutnya di awal
     nextButton.style.display = 'none';
 
-    // Start the animation
+    // Jalankan animasi cutscene
     showNextLine();
 
-    // Button event listeners
     nextButton.addEventListener('click', () => {
         window.location.href = 'Penjelasan.html';
     });
@@ -83,19 +62,12 @@ document.addEventListener('DOMContentLoaded', () => {
     skipButton.addEventListener('click', () => {
         isSkipped = true;
         container.innerHTML = '';
-        lines.forEach((line, idx) => {
+        lines.forEach(line => {
             const p = document.createElement('p');
             p.className = 'text-line';
             p.innerHTML = line;
-            p.style.opacity = '0';
-            p.style.transform = 'translateY(20px)';
             container.appendChild(p);
-            setTimeout(() => {
-                p.style.opacity = '1';
-                p.style.transform = 'translateY(0)';
-            }, 100 * idx);
         });
         nextButton.style.display = 'block';
     });
-});
 });
