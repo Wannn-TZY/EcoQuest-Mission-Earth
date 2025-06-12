@@ -12,6 +12,7 @@ let lives = 3;
 let timeLeft = 10;
 let gameInterval;
 let isGameOver = false;
+let playerName = '';
 
 function initGame() {
     updateUI();
@@ -146,6 +147,54 @@ function endGame(result) {
         document.getElementById('final-score-lose').textContent = score;
         document.getElementById('gameover-popup').classList.remove('hidden');
     }
+
+    if (result === 'victory') {
+        saveToLeaderboard(playerName, score, 'Pilah Sampah');
+    }
+
+    // Leaderboard: minta nama & simpan skor
+    setTimeout(() => {
+        let playerName = prompt("Masukkan nama kamu untuk leaderboard:", "");
+        if (playerName && playerName.trim() !== "") {
+            saveToLeaderboard(playerName.trim(), score);
+        }
+    }, 500);
+}
+
+function saveToLeaderboard(playerName, score) {
+    const key = 'leaderboard_PilahSampah';
+    let leaderboard = JSON.parse(localStorage.getItem(key)) || [];
+    leaderboard.push({ name: playerName, score: score });
+    leaderboard.sort((a, b) => b.score - a.score);
+    leaderboard = leaderboard.slice(0, 10); 
+    localStorage.setItem(key, JSON.stringify(leaderboard));
+}
+
+// Pindahkan fungsi ke scope global
+window.startGameWithName = function() {
+    const nameInput = document.getElementById('player-name');
+    if (nameInput.value.trim() === '') {
+        alert('Nama tidak boleh kosong!');
+        return;
+    }
+    
+    playerName = nameInput.value.trim();
+    document.querySelector('.name-popup-overlay').remove();
+    initGame(); // Mulai game
+}
+
+function showNamePopup() {
+    const overlay = document.createElement('div');
+    overlay.className = 'name-popup-overlay';
+    overlay.innerHTML = `
+        <div class="name-popup">
+            <h2>Masukkan Nama Kamu</h2>
+            <input type="text" id="player-name" placeholder="Masukkan nama..." maxlength="15">
+            <button onclick="window.startGameWithName()">Mulai Bermain</button>
+        </div>
+    `;
+    document.body.appendChild(overlay);
+    document.getElementById('player-name').focus();
 }
 
 // Modify your popup close handlers
@@ -164,4 +213,4 @@ document.querySelectorAll('#play-again, #play-again-lose, #back-to-menu, #back-t
 });
 
 // Start the game when the page loads
-window.addEventListener('load', initGame);
+window.addEventListener('load', showNamePopup);

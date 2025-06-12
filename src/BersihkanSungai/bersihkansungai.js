@@ -85,6 +85,8 @@ document.addEventListener('DOMContentLoaded', () => {
         const popup = document.getElementById('victory-popup');
         document.getElementById('final-score').textContent = score;
         popup.classList.remove('hidden');
+
+        saveToLeaderboard(playerName, score, 'Bersihkan Sungai');
     }
 
     function showGameOverPopup() {
@@ -136,6 +138,35 @@ document.addEventListener('DOMContentLoaded', () => {
             showGameOverPopup();
             endGame();
         }
+    }
+
+    let playerName = '';
+
+    // Pindahkan fungsi ke scope global
+    window.startGameWithName = function() {
+        const nameInput = document.getElementById('player-name');
+        if (nameInput.value.trim() === '') {
+            alert('Nama tidak boleh kosong!');
+            return;
+        }
+        
+        playerName = nameInput.value.trim();
+        document.querySelector('.name-popup-overlay').remove();
+        startGame(); // Mulai game
+    }
+
+    function showNamePopup() {
+        const overlay = document.createElement('div');
+        overlay.className = 'name-popup-overlay';
+        overlay.innerHTML = `
+            <div class="name-popup">
+                <h2>Masukkan Nama Kamu</h2>
+                <input type="text" id="player-name" placeholder="Masukkan nama..." maxlength="15">
+                <button onclick="window.startGameWithName()">Mulai Bermain</button>
+            </div>
+        `;
+        document.body.appendChild(overlay);
+        document.getElementById('player-name').focus();
     }
 
     function startGame() {
@@ -207,5 +238,18 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 
-    startGame();
+    function saveToLeaderboard(name, score, game) {
+        const leaderboard = JSON.parse(localStorage.getItem('leaderboard')) || [];
+        const newEntry = {
+            name,
+            score,
+            game,
+            date: new Date().toISOString()
+        };
+        leaderboard.push(newEntry);
+        localStorage.setItem('leaderboard', JSON.stringify(leaderboard));
+    }
+
+    // Panggil showNamePopup saat halaman dimuat
+    showNamePopup();
 });
