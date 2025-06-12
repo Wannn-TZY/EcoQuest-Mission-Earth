@@ -16,11 +16,8 @@ body {
 
 #penjelasan {
     position: absolute;
-<<<<<<< HEAD
     top: 25%; /* Adjusted from 10% to move down */
-=======
     top: 12%;
->>>>>>> f7ba071da5c7f2dc1d08c85b4410d2a391c7e263
     left: 50%;
     transform: translateX(-50%);
     width: 90%;
@@ -80,13 +77,11 @@ body {
     transform: scale(0.95);
 }
 
-<<<<<<< HEAD
+
 h1 {
     position: absolute;
     top: 5%; /* Added position and moved to top */
     left: 50%;
-  
-   
     text-align: center;
     font-size: 2.5rem;
     color: #2c3e50;
@@ -128,7 +123,12 @@ h1 {
         font-size: 2rem;
         letter-spacing: 1px;
         top: 8%; /* Adjust for mobile */
-=======
+    }
+    #volume-btn {
+        width: 50px; /* Slightly smaller on mobile */
+        right: 10px;
+        top: 10px;
+    }
 
 /* Responsive */
 @media (max-width: 600px) {
@@ -145,6 +145,5 @@ h1 {
         width: 45px;
         right: 10px;
         top: 10px;
->>>>>>> f7ba071da5c7f2dc1d08c85b4410d2a391c7e263
     }
-}
+}}

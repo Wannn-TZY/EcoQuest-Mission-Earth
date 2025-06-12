@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 document.addEventListener('DOMContentLoaded', function() {
     const lines = document.querySelectorAll('.text-line');
     const nextButton = document.getElementById('btn-selanjutnya');
@@ -13,7 +12,7 @@ document.addEventListener('DOMContentLoaded', function() {
     setTimeout(() => {
         nextButton.style.animation = 'fadeIn 1s forwards';
     }, (lines.length * 2000));
-=======
+
 document.addEventListener('DOMContentLoaded', () => {
     const lines = [
         "🏙️ Kota kita semakin bersih jika kita pilah sampah dengan benar!",
@@ -76,13 +75,8 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     showNextLine();
->>>>>>> f7ba071da5c7f2dc1d08c85b4410d2a391c7e263
+});
 
-    nextButton.addEventListener('click', () => {
-        window.location.href = 'Penjelasan.html';
-    });
-<<<<<<< HEAD
-=======
 
     skipButton.addEventListener('click', () => {
         isSkipped = true;
@@ -102,5 +96,19 @@ document.addEventListener('DOMContentLoaded', () => {
         });
         nextButton.style.opacity = 1;
     });
->>>>>>> f7ba071da5c7f2dc1d08c85b4410d2a391c7e263
+});
+
+// Tunggu sampai DOM sepenuhnya dimuat
+document.addEventListener('DOMContentLoaded', () => {
+    // Cari element nextButton
+    const nextButton = document.getElementById('nextButton');
+    
+    // Pastikan button ada sebelum menambahkan event listener
+    if (nextButton) {
+        nextButton.addEventListener('click', () => {
+            window.location.href = 'Penjelasan.html';
+        });
+    } else {
+        console.error('Element dengan id "nextButton" tidak ditemukan');
+    }
 });

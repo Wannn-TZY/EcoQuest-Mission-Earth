@@ -4,30 +4,30 @@ body {
     width: 100vw;
     height: 100vh;
     font-family: 'Arial', sans-serif;
-<<<<<<< HEAD
+
     background: #67b1d6;
     color: rgb(0, 0, 0);
-=======
+
     background: #e0f7fa;
     color: #222;
->>>>>>> f7ba071da5c7f2dc1d08c85b4410d2a391c7e263
+
     overflow: hidden;
 }
 
 .cutscene-container {
-<<<<<<< HEAD
+
     width: 100%;
     height: 100%;
-=======
+
     width: 100vw;
     height: 100vh;
->>>>>>> f7ba071da5c7f2dc1d08c85b4410d2a391c7e263
+
     display: flex;
     justify-content: center;
     align-items: center;
     background: url('../../Asset/PenjelasanPilahSampah.jpg') no-repeat center center/cover;
     position: relative;
-<<<<<<< HEAD
+
 }
 
 .text-container {
@@ -64,7 +64,6 @@ body {
 
 #btn-selanjutnya:hover {
     transform: scale(1.1);
-=======
     flex-direction: column;
     text-align: center;
 }
@@ -118,28 +117,23 @@ body {
 
 #btn-skip:hover {
     transform: scale(1.05);
->>>>>>> f7ba071da5c7f2dc1d08c85b4410d2a391c7e263
+
 }
 
 @keyframes fadeInUp {
     from {
         opacity: 0;
-<<<<<<< HEAD
         transform: translateY(20px);
-=======
         transform: translateY(30px);
->>>>>>> f7ba071da5c7f2dc1d08c85b4410d2a391c7e263
     }
     to {
         opacity: 1;
         transform: translateY(0);
     }
-<<<<<<< HEAD
+
 }
 
 @keyframes fadeIn {
     from { opacity: 0; }
     to { opacity: 1; }
-=======
->>>>>>> f7ba071da5c7f2dc1d08c85b4410d2a391c7e263
 }
