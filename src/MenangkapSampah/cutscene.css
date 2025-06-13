@@ -36,26 +36,33 @@ body {
     position: relative;
     z-index: 2;
     padding: 25px;
-    background: rgba(25, 118, 210, 0.85);
+    background: rgba(13, 71, 161, 0.3);
     border-radius: 15px;
     backdrop-filter: blur(5px);
-    box-shadow: 0 8px 32px rgba(13, 71, 161, 0.3);
+    box-shadow: 0 8px 32px rgba(25, 118, 210, 0.85);
     border: 1px solid rgba(255, 255, 255, 0.1);
     margin: 20px;
+    transition: transform 0.3s ease;
+    -webkit-transition: transform 0.3s ease;
+    -moz-transition: transform 0.3s ease;
+    -ms-transition: transform 0.3s ease;
+    -o-transition: transform 0.3s ease;
 }
 
 .text-line {
     margin-bottom: 20px;
     animation: fadeInUp 0.8s ease;
-    padding: 15px;
+    padding: 12px;
+    font-size: 1.3rem;
     border-radius: 8px;
     transition: all 0.3s ease;
-    background:rgba(25, 118, 210, 0.85) ;
+    background: rgba(13, 71, 161, 0.3);
     border: 1px solid rgba(255, 255, 255, 0.1);
+    cursor: pointer;
 }
 
 .text-line:hover {
-    transform: translateY(-5px);
+    transform: translateY(-3px) scale(1.02);
     background: rgba(21, 101, 192, 0.5);
     box-shadow: 0 5px 15px rgba(13, 71, 161, 0.3);
 }
