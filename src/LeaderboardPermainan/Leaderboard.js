@@ -69,6 +69,52 @@ document.addEventListener('DOMContentLoaded', () => {
     // Search input event listener
     searchInput.addEventListener('input', filterData);
 
+    // Reset leaderboard functionality
+    const resetButton = document.getElementById('reset-leaderboard');
+    const resetModal = document.getElementById('reset-modal');
+    const successModal = document.getElementById('success-modal');
+    const confirmReset = document.getElementById('confirm-reset');
+    const cancelReset = document.getElementById('cancel-reset');
+
+    resetButton.addEventListener('click', () => {
+        resetModal.style.display = 'block';
+    });
+
+    cancelReset.addEventListener('click', () => {
+        resetModal.style.display = 'none';
+    });
+
+    confirmReset.addEventListener('click', () => {
+        // Hapus data
+        localStorage.removeItem('leaderboard');
+        leaderboardData = [];
+        filterData();
+
+        // Tutup modal konfirmasi
+        resetModal.style.display = 'none';
+        
+        // Tampilkan modal sukses
+        successModal.style.display = 'block';
+        
+        // Mainkan sound effect (opsional)
+        const successSound = new Audio('../../Asset/success-sound.mp3');
+        successSound.play();
+    });
+
+    window.closeSuccessModal = function() {
+        successModal.style.display = 'none';
+    }
+
+    // Tutup modal jika user klik di luar modal
+    window.addEventListener('click', (e) => {
+        if (e.target === resetModal) {
+            resetModal.style.display = 'none';
+        }
+        if (e.target === successModal) {
+            successModal.style.display = 'none';
+        }
+    });
+
     // Initial render
     filterData();
 });

@@ -41,10 +41,48 @@
             </table>
         </div>
 
-        <button class="back-button" onclick="window.location.href='../TampilanUtama/TampilanUtama.html'">
-            <span>← Kembali ke Menu Utama</span>
-        </button>
+        <div class="button-container">
+            <button class="back-button" onclick="window.location.href='../TampilanUtama/TampilanUtama.html'">
+                <span>← Kembali ke Menu Utama</span>
+            </button>
+            <button class="reset-button" id="reset-leaderboard">
+                <span>🔄 Reset Leaderboard</span>
+            </button>
+        </div>
     </div>
     <script src="Leaderboard.js"></script>
+
+    <!-- Modal HTML -->
+    <div id="reset-modal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>⚠️ Peringatan Reset Data</h2>
+            </div>
+            <div class="modal-body">
+                <p>Apakah kamu yakin ingin menghapus semua data leaderboard?</p>
+                <p class="warning-text">⚠️ Data yang sudah dihapus tidak dapat dikembalikan!</p>
+            </div>
+            <div class="modal-footer">
+                <button id="confirm-reset" class="confirm-btn">Ya, Hapus Semua</button>
+                <button id="cancel-reset" class="cancel-btn">Batalkan</button>
+            </div>
+        </div>
+    </div>
+
+    <div id="success-modal" class="modal">
+        <div class="modal-content success">
+            <div class="modal-header">
+                <h2>✅ Berhasil!</h2>
+            </div>
+            <div class="modal-body">
+                <div class="success-animation">🎉</div>
+                <p>Data leaderboard berhasil dihapus!</p>
+                <p>Semua pemain akan memulai dari awal.</p>
+            </div>
+            <div class="modal-footer">
+                <button class="ok-btn" onclick="closeSuccessModal()">OK</button>
+            </div>
+        </div>
+    </div>
 </body>
 </html>
