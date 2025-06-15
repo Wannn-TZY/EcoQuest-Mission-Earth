@@ -14,15 +14,31 @@ window.onload = function () {
     let gameInterval;
     let isGameRunning = true;
     let playerName = '';
+    let gameInitialized = false; // Add flag to track if game has been initialized
+    let spawnInterval; // Move this declaration to the top
 
     // Initialize game
     function initGame() {
-        score = 0;
-        lives = 3;
-        timer = 10;
-        isGameRunning = true;
-        updateUI();
-        startTimer();
+        if (!playerName) {
+            showNamePopup();
+            return;
+        }
+
+        if (!gameInitialized) {
+            score = 0;
+            lives = 3;
+            timer = 10;
+            isGameRunning = true;
+            updateUI();
+            startTimer();
+            
+            // Start spawning trash only after game is initialized
+            spawnInterval = setInterval(() => {
+                if (isGameRunning) spawnTrash();
+            }, 1000);
+            
+            gameInitialized = true;
+        }
     }
 
     function updateUI() {
@@ -79,6 +95,11 @@ window.onload = function () {
 
     // Update resetGame function to clear all intervals
     function resetGame() {
+        // Clear existing spawn interval if it exists
+        if (spawnInterval) {
+            clearInterval(spawnInterval);
+        }
+
         score = 0;
         lives = 3;
         timer = 10;
@@ -94,6 +115,11 @@ window.onload = function () {
         // Update UI and restart timer
         updateUI();
         startTimer();
+
+        // Restart trash spawning
+        spawnInterval = setInterval(() => {
+            if (isGameRunning) spawnTrash();
+        }, 1000);
     }
 
     // Event listeners
@@ -237,13 +263,19 @@ window.onload = function () {
         }, 50);
     }
 
-    // Spawn sampah setiap detik
-    const spawnInterval = setInterval(() => {
-        if (isGameRunning) spawnTrash();
-    }, 1000);
-
-    // Panggil initGame sekali saja di akhir window.onload
-    initGame();
+    // Modify startGameWithName function
+    window.startGameWithName = function() {
+        const nameInput = document.getElementById('player-name');
+        if (nameInput.value.trim() === '') {
+            alert('Nama tidak boleh kosong!');
+            return;
+        }
+        
+        playerName = nameInput.value.trim();
+        document.querySelector('.name-popup-overlay').remove();
+        gameInitialized = false;
+        initGame(); // Start game after name is entered
+    }
 
     function saveToLeaderboard(name, score, game) {
         const leaderboard = JSON.parse(localStorage.getItem('leaderboard')) || [];
@@ -255,19 +287,6 @@ window.onload = function () {
         };
         leaderboard.push(newEntry);
         localStorage.setItem('leaderboard', JSON.stringify(leaderboard));
-    }
-
-    // Pindahkan fungsi ke scope global
-    window.startGameWithName = function() {
-        const nameInput = document.getElementById('player-name');
-        if (nameInput.value.trim() === '') {
-            alert('Nama tidak boleh kosong!');
-            return;
-        }
-        
-        playerName = nameInput.value.trim();
-        document.querySelector('.name-popup-overlay').remove();
-        initGame(); // Mulai game
     }
 
     function showNamePopup() {
@@ -284,6 +303,6 @@ window.onload = function () {
         document.getElementById('player-name').focus();
     }
 
-    // Panggil showNamePopup saat halaman dimuat
+    // Show name popup immediately
     showNamePopup();
 };

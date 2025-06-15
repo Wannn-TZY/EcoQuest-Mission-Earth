@@ -9,7 +9,7 @@ const trashItems = [
 
 let score = 0;
 let lives = 3;
-let timeLeft = 10;
+let timeLeft = 60;
 let gameInterval;
 let isGameOver = false;
 let playerName = '';
@@ -143,45 +143,25 @@ function endGame(result) {
     if (result === 'win') {
         document.getElementById('final-score').textContent = score;
         document.getElementById('victory-popup').classList.remove('hidden');
+        saveToLeaderboard(playerName, score, 'Pilah Sampah');
     } else {
         document.getElementById('final-score-lose').textContent = score;
         document.getElementById('gameover-popup').classList.remove('hidden');
     }
 
-    if (result === 'victory') {
-        saveToLeaderboard(playerName, score, 'Pilah Sampah');
+}
+
+function saveToLeaderboard(name, score, game) {
+        const leaderboard = JSON.parse(localStorage.getItem('leaderboard')) || [];
+        const newEntry = {
+            name,
+            score,
+            game,
+            date: new Date().toISOString()
+        };
+        leaderboard.push(newEntry);
+        localStorage.setItem('leaderboard', JSON.stringify(leaderboard));
     }
-
-    // Leaderboard: minta nama & simpan skor
-    setTimeout(() => {
-        let playerName = prompt("Masukkan nama kamu untuk leaderboard:", "");
-        if (playerName && playerName.trim() !== "") {
-            saveToLeaderboard(playerName.trim(), score);
-        }
-    }, 500);
-}
-
-function saveToLeaderboard(playerName, score) {
-    const key = 'leaderboard_PilahSampah';
-    let leaderboard = JSON.parse(localStorage.getItem(key)) || [];
-    leaderboard.push({ name: playerName, score: score });
-    leaderboard.sort((a, b) => b.score - a.score);
-    leaderboard = leaderboard.slice(0, 10); 
-    localStorage.setItem(key, JSON.stringify(leaderboard));
-}
-
-// Pindahkan fungsi ke scope global
-window.startGameWithName = function() {
-    const nameInput = document.getElementById('player-name');
-    if (nameInput.value.trim() === '') {
-        alert('Nama tidak boleh kosong!');
-        return;
-    }
-    
-    playerName = nameInput.value.trim();
-    document.querySelector('.name-popup-overlay').remove();
-    initGame(); // Mulai game
-}
 
 function showNamePopup() {
     const overlay = document.createElement('div');
@@ -190,11 +170,23 @@ function showNamePopup() {
         <div class="name-popup">
             <h2>Masukkan Nama Kamu</h2>
             <input type="text" id="player-name" placeholder="Masukkan nama..." maxlength="15">
-            <button onclick="window.startGameWithName()">Mulai Bermain</button>
+            <button onclick="startGameWithName()">Mulai Bermain</button>
         </div>
     `;
     document.body.appendChild(overlay);
     document.getElementById('player-name').focus();
+}
+
+function startGameWithName() {
+    const nameInput = document.getElementById('player-name');
+    if (nameInput.value.trim() === '') {
+        alert('Nama tidak boleh kosong!');
+        return;
+    }
+    
+    playerName = nameInput.value.trim();
+    document.querySelector('.name-popup-overlay').remove();
+    initGame();
 }
 
 // Modify your popup close handlers
