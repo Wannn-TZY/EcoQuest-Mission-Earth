@@ -12,16 +12,17 @@ document.addEventListener('DOMContentLoaded', () => {
 
     let currentLine = 0;
     let isSkipped = false;
+    let typingInterval; // Tambah variable untuk menyimpan interval
 
     function typeLine(text, callback) {
         const p = document.createElement('p');
         p.className = 'text-line';
         container.appendChild(p);
-
+        
         let i = 0;
-        const typing = setInterval(() => {
+        typingInterval = setInterval(() => { // Simpan interval ke variable
             if (isSkipped) {
-                clearInterval(typing);
+                clearInterval(typingInterval); // Clear interval saat skip
                 p.innerHTML = text;
                 if (callback) callback();
                 return;
@@ -30,7 +31,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 p.innerHTML += text.charAt(i);
                 i++;
             } else {
-                clearInterval(typing);
+                clearInterval(typingInterval);
                 if (callback) callback();
             }
         }, 40);
@@ -61,6 +62,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     skipButton.addEventListener('click', () => {
         isSkipped = true;
+        clearInterval(typingInterval); // Clear interval yang sedang berjalan
         container.innerHTML = '';
         lines.forEach(line => {
             const p = document.createElement('p');
