@@ -10,7 +10,7 @@ window.onload = function () {
     
     let score = 0;
     let lives = 3;
-    let timer = 10;
+    let timer = 60;
     let gameInterval;
     let isGameRunning = true;
     let playerName = '';

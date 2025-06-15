@@ -23,7 +23,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     let score = 0;
     let lives = 3;
-    let timeLeft = 10;
+    let timeLeft = 60;
     let gameInterval;
     let timerInterval;
 
