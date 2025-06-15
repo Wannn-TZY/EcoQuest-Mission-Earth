@@ -7,38 +7,38 @@
     <link rel="stylesheet" href="bersihkansungai.css">
     <link rel="stylesheet" href="../styles/namePopup.css">
 </head>
+
 <body>
-    <div id="gameContainer">
-        <div id="score">Score: 0</div>
-        <div id="lives">Lives: 3</div>
-        <div id="timer">Time: 60</div>
+   <div id="gameContainer">
+    <div id="hud">
+      <span id="score">Score: 0</span>
+      <span id="lives">Lives: 3</span>
+      <span id="timer">Time: 10</span>
+    </div>
         <div id="riverContainer">
             <div class="riverBackground"></div>
         </div>
+    <!-- Pop-up Menang -->
+    <div id="victory-popup" class="popup">
+      <div class="popup-content">
+        <h2>Selamat Kamu Menang!</h2>
+        <p>Skor Kamu: <span class="popup-score">0</span></p>
+        <button id="play-again">Main Lagi</button>
+        <button id="back-to-menu">Kembali ke Menu</button>
+      </div>
     </div>
 
-    <div id="victory-popup" class="popup hidden">
-        <div class="popup-content">
-            <img src="../../Asset/PopUpKemenangan.jpg" class="popup-bg" alt="Popup Kemenangan">
-            <div class="final-score">Score: <span id="final-score">0</span></div>
-            <div class="popup-buttons">
-                <img src="../../Asset/TombolCobaLagiPopUp.jpg" id="play-again" class="popup-button" alt="Coba Lagi">
-                <img src="../../Asset/TombolHomePopUp.jpg" id="back-to-menu" class="popup-button" alt="Menu Utama">
-            </div>
-        </div>
+    <!-- Pop-up Kalah -->
+    <div id="gameover-popup" class="popup">
+      <div class="popup-content">
+        <h2>Game Over</h2>
+        <p>Skor Kamu: <span class="popup-score">0</span></p>
+        <button id="play-again-lose">Coba Lagi</button>
+        <button id="back-to-menu-lose">Kembali ke Menu</button>
+      </div>
     </div>
+  </div>
 
-    <!-- Game Over Popup -->
-    <div id="gameover-popup" class="popup hidden">
-        <div class="popup-content">
-            <img src="../../Asset/PopUpKekalahan.png" class="popup-bg" alt="Popup Kekalahan">
-            <div class="final-score">Score: <span id="final-score-lose">0</span></div>
-            <div class="popup-buttons">
-                <img src="../../Asset/TombolCobaLagiPopUp.jpg" id="play-again-lose" class="popup-button" alt="Coba Lagi">
-                <img src="../../Asset/TombolHomePopUp.jpg" id="back-to-menu-lose" class="popup-button" alt="Menu Utama">
-            </div>
-        </div>
-    </div>
-    <script src="bersihkansungai.js"></script>
+  <script src="bersihkansungai.js"></script>
 </body>
 </html>

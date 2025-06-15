@@ -1,5 +1,4 @@
 document.addEventListener('DOMContentLoaded', () => {
-    // Add background music setup
     const backgroundMusic = new Audio('../../backsound/backsound-game1.mp3');
     backgroundMusic.loop = true;
     backgroundMusic.volume = 0.5;
@@ -12,7 +11,6 @@ document.addEventListener('DOMContentLoaded', () => {
         console.log('Audio sudah siap diputar');
     });
 
-    // Play background music after first user interaction
     document.addEventListener('click', function initAudio() {
         playBackgroundMusic();
         document.removeEventListener('click', initAudio);
@@ -41,16 +39,15 @@ document.addEventListener('DOMContentLoaded', () => {
         sampah.className = 'sampah';
         sampah.src = sampahImages[Math.floor(Math.random() * sampahImages.length)];
         
-        // Calculate position within river area (70vh from bottom)
-        const riverHeight = window.innerHeight * 0.6; // 70vh in pixels
-        const padding = 50; // Padding to keep sampah fully within river
-        const minY = window.innerHeight - riverHeight + padding; // Top boundary with padding
-        const maxY = window.innerHeight - padding; // Bottom boundary with padding
+        const riverHeight = window.innerHeight * 0.6;
+        const padding = 50;
+        const minY = window.innerHeight - riverHeight + padding;
+        const maxY = window.innerHeight - padding;
         const yPos = minY + (Math.random() * (maxY - minY));
         
         sampah.style.top = `${yPos}px`;
-        sampah.style.right = '-50px'; // Start from right side
-        sampah.style.left = 'auto'; // Clear left position
+        sampah.style.right = '-50px';
+        sampah.style.left = 'auto';
         
         gameContainer.appendChild(sampah);
 
@@ -60,14 +57,13 @@ document.addEventListener('DOMContentLoaded', () => {
             gameContainer.removeChild(sampah);
         });
 
-        let xPos = gameContainer.offsetWidth + 50; // Start beyond right edge
-        const speed = 5 ;
+        let xPos = gameContainer.offsetWidth + 50;
+        const speed = 5;
         
         const moveInterval = setInterval(() => {
-            xPos -= speed; // Move left instead of right
+            xPos -= speed;
             sampah.style.right = `${gameContainer.offsetWidth - xPos}px`;
 
-            // Check if sampah has reached the left edge
             if (xPos < -50) {
                 if (gameContainer.contains(sampah)) {
                     gameContainer.removeChild(sampah);
@@ -78,50 +74,40 @@ document.addEventListener('DOMContentLoaded', () => {
         }, 50);
     }
 
-    let gameTimer = 10;
-    let isGameActive = true;
-
     function showVictoryPopup() {
         const popup = document.getElementById('victory-popup');
-        document.getElementById('final-score').textContent = score;
-        popup.classList.remove('hidden');
-
+        popup.classList.add('show');
+        document.querySelector('#victory-popup .popup-score').textContent = score;
         saveToLeaderboard(playerName, score, 'Bersihkan Sungai');
     }
 
     function showGameOverPopup() {
         const popup = document.getElementById('gameover-popup');
-        document.getElementById('final-score-lose').textContent = score;
-        popup.classList.remove('hidden');
+        popup.classList.add('show');
+        document.querySelector('#gameover-popup .popup-score').textContent = score;
     }
 
     function resetGame() {
-        // Reset game variables
         score = 0;
         lives = 3;
         gameTimer = 60;
         isGameActive = true;
         
-        // Reset and play music
         backgroundMusic.volume = 0.5;
         backgroundMusic.currentTime = 0;
         backgroundMusic.play();
         
-        // Reset displays
-        document.getElementById('score').textContent = `Score: ${score}`;
-        document.getElementById('lives').textContent = `Lives: ${lives}`;
-        document.getElementById('timer').textContent = `Time: ${gameTimer}`;
+        scoreElement.textContent = `Score: ${score}`;
+        livesElement.textContent = `Lives: ${lives}`;
+        timerElement.textContent = `Time: ${gameTimer}`;
         
-        // Hide popups
-        document.getElementById('victory-popup').classList.add('hidden');
-        document.getElementById('gameover-popup').classList.add('hidden');
+        document.getElementById('victory-popup').classList.remove('show');
+        document.getElementById('gameover-popup').classList.remove('show');
         
-        // Clear and restart the game
         clearInterval(gameInterval);
         startGame();
     }
 
-    // Event listeners for popup buttons
     document.getElementById('play-again').addEventListener('click', resetGame);
     document.getElementById('play-again-lose').addEventListener('click', resetGame);
     document.getElementById('back-to-menu').addEventListener('click', () => {
@@ -142,7 +128,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
     let playerName = '';
 
-    // Pindahkan fungsi ke scope global
     window.startGameWithName = function() {
         const nameInput = document.getElementById('player-name');
         if (nameInput.value.trim() === '') {
@@ -152,7 +137,7 @@ document.addEventListener('DOMContentLoaded', () => {
         
         playerName = nameInput.value.trim();
         document.querySelector('.name-popup-overlay').remove();
-        startGame(); // Mulai game
+        startGame();
     }
 
     function showNamePopup() {
@@ -170,32 +155,25 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     function startGame() {
-        // Reset game state
         score = 0;
         lives = 3;
         timeLeft = 10;
         gameTimer = 10;
         isGameActive = true;
         
-        // Update display
         scoreElement.textContent = `Score: ${score}`;
         livesElement.textContent = `Lives: ${lives}`;
         timerElement.textContent = `Time: ${timeLeft}`;
         
-        // Clear any existing intervals
         if (gameInterval) clearInterval(gameInterval);
         if (timerInterval) clearInterval(timerInterval);
         
-        // Start spawning sampah
         gameInterval = setInterval(createSampah, 2000);
         
-        // Start timer
         timerInterval = setInterval(() => {
             if (isGameActive) {
                 timeLeft--;
                 timerElement.textContent = `Time: ${timeLeft}`;
-                
-                // Victory condition
                 if (timeLeft <= 0 && lives > 0) {
                     showVictoryPopup();
                     endGame();
@@ -209,7 +187,6 @@ document.addEventListener('DOMContentLoaded', () => {
         clearInterval(gameInterval);
         clearInterval(timerInterval);
         
-        // Fade out the music
         const fadeOut = setInterval(() => {
             if (backgroundMusic.volume > 0.1) {
                 backgroundMusic.volume -= 0.1;
@@ -220,7 +197,6 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         }, 100);
         
-        // Remove all existing sampah
         const allSampah = document.querySelectorAll('.sampah');
         allSampah.forEach(sampah => gameContainer.removeChild(sampah));
     }
@@ -250,6 +226,5 @@ document.addEventListener('DOMContentLoaded', () => {
         localStorage.setItem('leaderboard', JSON.stringify(leaderboard));
     }
 
-    // Panggil showNamePopup saat halaman dimuat
     showNamePopup();
 });
