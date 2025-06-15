@@ -7,16 +7,17 @@ document.addEventListener("DOMContentLoaded", function() {
     const volumeSlider = document.getElementById("volume-slider");
     
     let volumeAktif = true;
-    let audio = new Audio("../../backsound/backsound-story.mp3");
+    let audio = new Audio("../../backsound/bs.mp3");
     audio.loop = true;
     
     const stories = [
-        "🌍 Selamat datang di EcoQuest: Mission Earth!",
-        "🌱 Di dunia ini, kita memiliki misi penting...",
-        "🌊 Sungai, dan Taman ini sudah tercemar dengan berbagai sampah",
-        "🌿 Bumi kita membutuhkan pahlawan sepertimu!",
-        "♻️ Bersama-sama, kita akan belajar menjaga lingkungan...",
-        "🚀 Apakah kamu siap untuk petualangan ini?"
+            "🌍 Selamat datang di EcoQuest: Mission Earth!",
+            "🌪️ Dunia sedang terancam oleh sampah dan polusi yang makin parah.",
+            "👣 Jejakmu di game ini bisa jadi langkah awal perubahan nyata.",
+            "🧤 Tugas kamu? Bersihkan lingkungan, pilah sampah, dan pulihkan alam!",
+            "🌿 Main sambil belajar, jadi pahlawan bumi yang dibutuhkan planet ini."
+
+
     ];
 
     let currentStory = 0;

@@ -20,7 +20,7 @@ document.addEventListener("DOMContentLoaded", function () {
         if (index >= kalimat.length) return;
         const p = document.createElement('p');
         p.style.opacity = 0;
-        p.style.transition = "opacity 0.7s, transform 0.7s";
+        p.style.transition = "opacity 0.5s, transform 0.5s";
         p.style.transform = "translateY(20px)";
         p.innerHTML = "";
         typedTextElement.appendChild(p);
@@ -35,7 +35,7 @@ document.addEventListener("DOMContentLoaded", function () {
                 setTimeout(() => {
                     p.style.opacity = 1;
                     p.style.transform = "translateY(0)";
-                    setTimeout(() => tampilkanKalimat(index + 1), 500);
+                    setTimeout(() => tampilkanKalimat(index + 1));
                 }, 80);
             }
         }

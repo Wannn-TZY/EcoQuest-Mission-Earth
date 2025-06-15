@@ -226,5 +226,15 @@ document.addEventListener('DOMContentLoaded', () => {
         localStorage.setItem('leaderboard', JSON.stringify(leaderboard));
     }
 
+    // BACKSOUND OTOMATIS
+    const backsound = new Audio('bs.mp3');
+    backsound.loop = true;
+    backsound.volume = 0.5;
+    backsound.play().catch(() => {
+        document.body.addEventListener('click', () => {
+            backsound.play();
+        }, { once: true });
+    });
+
     showNamePopup();
 });
