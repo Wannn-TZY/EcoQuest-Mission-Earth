@@ -157,8 +157,8 @@ document.addEventListener('DOMContentLoaded', () => {
     function startGame() {
         score = 0;
         lives = 3;
-        timeLeft = 10;
-        gameTimer = 10;
+        timeLeft = 20;
+        gameTimer = 20;
         isGameActive = true;
         
         scoreElement.textContent = `Score: ${score}`;
@@ -226,7 +226,37 @@ document.addEventListener('DOMContentLoaded', () => {
         localStorage.setItem('leaderboard', JSON.stringify(leaderboard));
     }
 
+    function getGradeDescription(score) {
+        if (score >= 90 && score <= 100) {
+            return "SANGAT LUAR BIASA. kamu cerdas";
+        } else if (score >= 80 && score <= 89) {
+            return "LUAR BIASA. kamu hebat";
+        } else if (score >= 60 && score <= 79) {
+            return "CUKUP BAGUS. kamu harus bisa";
+        } else {
+            return "CUKUP. kamu harus belajar lagi";
+        }
+    }
+
     // BACKSOUND OTOMATIS
   
     showNamePopup();
+
+    const leaderboard = JSON.parse(localStorage.getItem('leaderboard')) || [];
+    const leaderboardTableBody = document.querySelector('#leaderboardTable tbody');
+    leaderboardTableBody.innerHTML = '';
+
+    leaderboard.forEach((entry, i) => {
+      const keterangan = getGradeDescription(entry.score);
+      const row = document.createElement('tr');
+      row.innerHTML = `
+        <td>${i+1}</td>
+        <td>${entry.name}</td>
+        <td>${entry.score}</td>
+        <td>${entry.game}</td>
+        <td>${keterangan}</td>
+        <td>${formatDate(entry.date)}</td>
+      `;
+      leaderboardTableBody.appendChild(row);
+    });
 });

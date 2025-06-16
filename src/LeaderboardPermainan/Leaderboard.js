@@ -26,12 +26,14 @@ document.addEventListener('DOMContentLoaded', () => {
         }
 
         data.forEach((entry, index) => {
+            const keterangan = getGradeDescription(entry.score);
             const row = leaderboardTable.insertRow();
             row.innerHTML = `
                 <td>${index + 1}</td>
                 <td><span class="player-name">${entry.name}</span></td>
                 <td><span class="score">${entry.score}</span></td>
                 <td><span class="game-name">${entry.game}</span></td>
+                <td>${keterangan}</td>
                 <td><span class="date">${formatDate(entry.date || new Date())}</span></td>
             `;
         });
@@ -118,3 +120,15 @@ document.addEventListener('DOMContentLoaded', () => {
     // Initial render
     filterData();
 });
+
+function getGradeDescription(score) {
+  if (score >= 90 && score <= 100) {
+    return "SANGAT LUAR BIASA. kamu cerdas";
+  } else if (score >= 80 && score <= 89) {
+    return "LUAR BIASA. kamu hebat";
+  } else if (score >= 60 && score <= 79) {
+    return "CUKUP BAGUS. kamu harus bisa";
+  } else {
+    return "CUKUP. kamu harus belajar lagi";
+  }
+}

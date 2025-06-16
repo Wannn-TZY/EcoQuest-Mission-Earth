@@ -43,7 +43,7 @@ document.addEventListener('DOMContentLoaded', () => {
         if (!gameInitialized) {
             score = 0;
             lives = 3;
-            timer = 10;
+            timer = 15;
             isGameRunning = true;
             updateUI();
             startTimer();
