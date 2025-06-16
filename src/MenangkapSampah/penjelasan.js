@@ -3,7 +3,11 @@ document.addEventListener("DOMContentLoaded", function () {
     const volumeBtn = document.getElementById("volume-btn");
     const typedTextElement = document.getElementById("penjelasan");
 
+ 
     let volumeAktif = true;
+    let audio = new Audio("../../backsound/backsound-game2.mp3");
+    audio.loop = true;
+    audio.play();
 
     // Penjelasan dengan emoji & highlight
     const kalimat = [
@@ -53,7 +57,13 @@ document.addEventListener("DOMContentLoaded", function () {
     // Event tombol volume
     volumeBtn.addEventListener("click", function () {
         volumeAktif = !volumeAktif;
-        volumeBtn.src = volumeAktif ? "../../Asset/VolumeAktif.jpg" : "../../Asset/VolumeNonAktif.jpg";
+        if (volumeAktif) {
+            audio.play();
+            volumeBtn.src = "../../Asset/VolumeAktif.jpg";
+        } else {
+            audio.pause();
+            volumeBtn.src = "../../Asset/VolumeNonAktif.jpg";
+        }
     });
 
     // Tambahkan tombol "Lewati Penjelasan" agar user bisa langsung main

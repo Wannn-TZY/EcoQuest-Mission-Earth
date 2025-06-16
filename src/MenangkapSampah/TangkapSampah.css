@@ -223,3 +223,35 @@ body {
     top: 20px;
     right: 20px;
 }
+
+/* Container tombol */
+.button-group {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  gap: 1.2rem;
+  margin-top: 2.5rem;   /* Tambahkan margin-top agar tombol turun ke bawah */
+  position: relative;
+  z-index: 2;
+}
+
+/* Jika tombol terlalu besar, kecilkan sedikit */
+.button-group button,
+.button-group .score-btn {
+  padding: 0.7em 2em;
+  font-size: 1.1rem;
+  border-radius: 22px;
+  border: none;
+  font-weight: bold;
+  background: #90caf9;
+  color: #fff;
+  box-shadow: 0 2px 8px #90caf980;
+  transition: background 0.2s, transform 0.15s;
+  cursor: pointer;
+}
+
+.button-group button:hover,
+.button-group .score-btn:hover {
+  background: #42a5f5;
+  transform: scale(1.07);
+}

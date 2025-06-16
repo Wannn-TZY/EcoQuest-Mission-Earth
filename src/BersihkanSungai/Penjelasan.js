@@ -5,7 +5,7 @@ document.addEventListener("DOMContentLoaded", function () {
     const kembali = document.getElementById("btn-kembali");
 
     let volumeAktif = true;
-    let audio = new Audio("../../backsound/backsound-game1.mp3");
+    let audio = new Audio("../../backsound/backsound-game3.mp3");
     audio.loop = true;
     audio.play();
 

@@ -4,6 +4,10 @@ document.addEventListener("DOMContentLoaded", function () {
     const typedTextElement = document.getElementById("typed-text");
 
     let volumeAktif = true;
+    let audio = new Audio("../../backsound/backsound-game1.mp3");
+    audio.loop = true;
+    audio.play();
+
 
     // Penjelasan dengan emoji & highlight warna
     const kalimat = [
@@ -51,10 +55,17 @@ document.addEventListener("DOMContentLoaded", function () {
     });
 
     // Event tombol volume
-    volumeBtn.addEventListener("click", function () {
+   volumeBtn.addEventListener("click", function () {
         volumeAktif = !volumeAktif;
-        volumeBtn.src = volumeAktif ? "../../Asset/VolumeAktif.jpg" : "../../Asset/VolumeNonAktif.jpg";
+        if (volumeAktif) {
+            audio.play();
+            volumeBtn.src = "../../Asset/VolumeAktif.jpg";
+        } else {
+            audio.pause();
+            volumeBtn.src = "../../Asset/VolumeNonAktif.jpg";
+        }
     });
+
 
     // Tambahkan tombol "Lewati Penjelasan" agar user bisa langsung main
     if (!document.getElementById('btn-lewati')) {

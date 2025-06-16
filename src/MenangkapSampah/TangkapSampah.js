@@ -1,5 +1,21 @@
-window.onload = function () {
-    console.log("Halaman sudah dimuat sepenuhnya!");
+document.addEventListener('DOMContentLoaded', () => {
+    const backgroundMusic = new Audio('../../backsound/backsound-game2.mp3');
+    backgroundMusic.loop = true;
+    backgroundMusic.volume = 0.5;
+
+    backgroundMusic.addEventListener('error', (e) => {
+        console.log('Error loading audio:', e);
+    });
+
+    backgroundMusic.addEventListener('canplaythrough', () => {
+        console.log('Audio sudah siap diputar');
+    });
+
+    document.addEventListener('click', function initAudio() {
+        playBackgroundMusic();
+        document.removeEventListener('click', initAudio);
+    }, { once: true });
+
     
     const trashBin = document.getElementById('trash-bin');
     const gameArea = document.getElementById('game-area');
@@ -141,6 +157,15 @@ window.onload = function () {
     document.getElementById('back-to-menu-lose').addEventListener('click', () => {
         window.location.href = '../PilihPermainan/PilihPermainan.html';
     });
+
+     document.getElementById('leaderboard').addEventListener('click', () => {
+        window.location.href = '../LeaderboardPermainan/Leaderboard.html';
+    });
+
+    document.getElementById('leader-board').addEventListener('click', () => {
+        window.location.href = '../LeaderboardPermainan/Leaderboard.html';
+    });
+
 
     // Check lives
     function decreaseLives() {
@@ -304,5 +329,14 @@ window.onload = function () {
     }
 
     // Show name popup immediately
+    const backsound = new Audio('bs.mp3');
+    backsound.loop = true;
+    backsound.volume = 0.5;
+    backsound.play().catch(() => {
+        document.body.addEventListener('click', () => {
+            backsound.play();
+        }, { once: true });
+    });
+
     showNamePopup();
-};
+});

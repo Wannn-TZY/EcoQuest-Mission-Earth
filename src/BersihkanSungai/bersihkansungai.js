@@ -1,5 +1,5 @@
 document.addEventListener('DOMContentLoaded', () => {
-    const backgroundMusic = new Audio('../../backsound/backsound-game1.mp3');
+    const backgroundMusic = new Audio('../../backsound/backsound-game3.mp3');
     backgroundMusic.loop = true;
     backgroundMusic.volume = 0.5;
 
@@ -227,14 +227,6 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     // BACKSOUND OTOMATIS
-    const backsound = new Audio('bs.mp3');
-    backsound.loop = true;
-    backsound.volume = 0.5;
-    backsound.play().catch(() => {
-        document.body.addEventListener('click', () => {
-            backsound.play();
-        }, { once: true });
-    });
-
+  
     showNamePopup();
 });
