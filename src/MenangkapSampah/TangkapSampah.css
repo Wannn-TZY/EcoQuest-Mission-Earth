@@ -140,27 +140,27 @@ body {
 }
 
 .popup-buttons {
-    position: absolute;
-    bottom: 8%; /* Adjusted from 10% */
-    left: 0;
-    right: 0;
+   position: absolute;
+    bottom: 1.5%; /* Bisa disesuaikan kalau perlu lebih turun */
+    left: 50%;
+    transform: translateX(-50%);
     display: flex;
     justify-content: center;
-    gap: 30px; /* Reduced from 40px */
+    gap: 20px; /* sedikit lebih sempit jaraknya */
     animation: buttonsAppear 0.5s ease-out 0.5s both;
 }
 
+
 .popup-button {
-    width: 120px; /* Reduced from 130px */
+    width: 90px; /* kecilin dari 120px */
     height: auto;
     cursor: pointer;
     transition: all 0.3s ease;
-    /* Removed filter drop-shadow */
 }
 
 .popup-button:hover {
-    transform: scale(1.1) translateY(-5px);
-    /* Removed filter drop-shadow */
+    transform: scale(1.1);
+    filter: brightness(1.2);
 }
 
 .popup-button:active {

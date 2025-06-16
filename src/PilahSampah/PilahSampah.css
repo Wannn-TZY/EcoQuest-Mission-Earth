@@ -138,21 +138,22 @@ body {
 }
 
 .popup-buttons {
-    position: absolute;
-    bottom: 5%;
-    right: 17%; /* Changed from 50% to 60% to move buttons more to the right */
+   position: absolute;
+    bottom: 1.5%; /* Bisa disesuaikan kalau perlu lebih turun */
+    left: 50%;
     transform: translateX(-50%);
     display: flex;
-    gap: 20px;
-    opacity: 0;
-    animation: popupFadeIn 0.5s ease-out 0.7s forwards;
+    justify-content: center;
+    gap: 20px; /* sedikit lebih sempit jaraknya */
+    animation: buttonsAppear 0.5s ease-out 0.5s both;
 }
 
+
 .popup-button {
-    width: 150px;
+    width: 90px; /* kecilin dari 120px */
     height: auto;
     cursor: pointer;
-    transition: transform 0.2s, filter 0.3s;
+    transition: all 0.3s ease;
 }
 
 .popup-button:hover {
