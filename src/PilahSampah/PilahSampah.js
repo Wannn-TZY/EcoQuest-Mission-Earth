@@ -190,19 +190,32 @@ function startGameWithName() {
 }
 
 // Modify your popup close handlers
-document.querySelectorAll('#play-again, #play-again-lose, #back-to-menu, #back-to-menu-lose').forEach(button => {
-    button.addEventListener('click', () => {
-        const popup = button.closest('.popup');
-        popup.classList.add('fade-out');
-        setTimeout(() => {
-            if (button.id.includes('back-to-menu')) {
-                window.location.href = '../PilihPermainan/PilihPermainan.html';
-            } else {
-                location.reload();
-            }
-        }, 500);
+ document.getElementById('play-again').addEventListener('click', () => {
+        document.getElementById('victory-popup').classList.add('hidden');
+        resetGame();
     });
-});
+
+    document.getElementById('back-to-menu').addEventListener('click', () => {
+        window.location.href = '../PilihPermainan/PilihPermainan.html';
+    });
+
+    // Event listeners for game over popup buttons
+    document.getElementById('play-again-lose').addEventListener('click', () => {
+        document.getElementById('gameover-popup').classList.add('hidden');
+        resetGame();
+    });
+
+    document.getElementById('back-to-menu-lose').addEventListener('click', () => {
+        window.location.href = '../PilihPermainan/PilihPermainan.html';
+    });
+
+     document.getElementById('leaderboard').addEventListener('click', () => {
+        window.location.href = '../LeaderboardPermainan/Leaderboard.html';
+    });
+
+    document.getElementById('leader-board').addEventListener('click', () => {
+        window.location.href = '../LeaderboardPermainan/Leaderboard.html';
+    });
 
 // Start the game when the page loads
 window.addEventListener('load', showNamePopup);

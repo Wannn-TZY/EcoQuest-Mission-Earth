@@ -225,19 +225,22 @@ body {
 }
 
 /* Container tombol */
-.button-group {
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  gap: 1.2rem;
-  margin-top: 2.5rem;   /* Tambahkan margin-top agar tombol turun ke bawah */
-  position: relative;
-  z-index: 2;
+.popup-buttons {
+    position: absolute;
+    bottom: 3%; 
+    left: 0;
+    right: 0;
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    animation: buttonsAppear 0.5s ease-out 0.5s both;
 }
 
+
+
 /* Jika tombol terlalu besar, kecilkan sedikit */
-.button-group button,
-.button-group .score-btn {
+.popup-button button,
+.popup-button .score-btn {
   padding: 0.7em 2em;
   font-size: 1.1rem;
   border-radius: 22px;
@@ -250,8 +253,8 @@ body {
   cursor: pointer;
 }
 
-.button-group button:hover,
-.button-group .score-btn:hover {
+.popup-button button:hover,
+.popup-button .score-btn:hover {
   background: #42a5f5;
   transform: scale(1.07);
 }
