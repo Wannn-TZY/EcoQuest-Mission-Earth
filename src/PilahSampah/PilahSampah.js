@@ -91,6 +91,7 @@ function setupDragAndDrop() {
     });
 }
 
+// Modify the handleDrop function
 function handleDrop(e) {
     e.preventDefault();
     const trashType = e.dataTransfer.getData('text/plain');
@@ -98,7 +99,6 @@ function handleDrop(e) {
     const draggedElement = document.querySelector('.trash-item[dragging="true"]');
     
     if (draggedElement) {
-        // Remove the trash item regardless of correct/incorrect bin
         draggedElement.remove();
         
         if (trashType === binType) {
@@ -108,6 +108,8 @@ function handleDrop(e) {
         } else {
             lives--;
             if (lives <= 0) {
+                lives = 0; // Force lives to 0
+                updateUI(); // Update display before ending game
                 endGame('lose');
                 return;
             }
@@ -190,11 +192,45 @@ function startGameWithName() {
     initGame();
 }
 
-// Modify your popup close handlers
+// Add resetGame function
+function resetGame() {
+    // Reset game variables
+    score = 0;
+    lives = 3;
+    timeLeft = 20;
+    isGameOver = false;
+
+    // Clear existing intervals
+    if (gameInterval) {
+        clearInterval(gameInterval);
+    }
+
+    // Remove all existing trash items
+    const gameArea = document.getElementById('game-area');
+    const trashItems = document.querySelectorAll('.trash-item');
+    trashItems.forEach(item => item.remove());
+
+    // Reset UI
+    updateUI();
+
+    // Hide any visible popups
+    document.getElementById('victory-popup').classList.add('hidden');
+    document.getElementById('gameover-popup').classList.add('hidden');
+
+    // Start new game
+    initGame();
+}
+
+// Update play-again button handlers
 document.getElementById('play-again').addEventListener('click', () => {
-        document.getElementById('victory-popup').classList.add('hidden');
-        resetGame();
-    });
+    document.getElementById('victory-popup').classList.add('hidden');
+    resetGame();
+});
+
+document.getElementById('play-again-lose').addEventListener('click', () => {
+    document.getElementById('gameover-popup').classList.add('hidden');
+    resetGame();
+});
 
     document.getElementById('back-to-menu').addEventListener('click', () => {
         window.location.href = '../PilihPermainan/PilihPermainan.html';
@@ -219,22 +255,112 @@ document.getElementById('play-again').addEventListener('click', () => {
     });
 
 document.addEventListener('DOMContentLoaded', () => {
-    const backgroundMusic = new Audio('../../backsound/backsound-game3.mp3');
+    const playerName = localStorage.getItem('namaPemain');
+    if (!playerName) {
+        window.location.href = '../PilihPermainan/PilihPermainan.html';
+        return;
+    }
+
+    // Audio setup
+    const backgroundMusic = new Audio('../../backsound/backsound-game2.mp3');
     backgroundMusic.loop = true;
     backgroundMusic.volume = 0.5;
 
-    const playBackgroundMusic = () => {
-        backgroundMusic.play().catch(error => {
-            console.log("Autoplay prevented:", error);
-            document.addEventListener('click', () => {
-                backgroundMusic.play();
-            }, { once: true });
-        });
-    };
+    backgroundMusic.addEventListener('error', (e) => {
+        console.error('Error loading audio:', e);
+    });
 
-    playBackgroundMusic();
+    document.addEventListener('click', function initAudio() {
+        backgroundMusic.play().catch(e => console.error('Audio play failed:', e));
+        document.removeEventListener('click', initAudio);
+    }, { once: true });
+
+    function saveToLeaderboard(score) {
+        const leaderboard = JSON.parse(localStorage.getItem('leaderboard')) || [];
+        const newEntry = {
+            name: playerName,
+            score,
+            game: 'Pilah Sampah',
+            date: new Date().toISOString()
+        };
+        leaderboard.push(newEntry);
+        localStorage.setItem('leaderboard', JSON.stringify(leaderboard));
+    }
+
+    function showVictoryPopup() {
+        const popup = document.getElementById('victory-popup');
+        const finalScoreElement = document.getElementById('final-score');
+        finalScoreElement.textContent = score;
+        popup.classList.remove('hidden');
+        
+        // Fade out music
+        const fadeOut = setInterval(() => {
+            if (backgroundMusic.volume > 0.1) {
+                backgroundMusic.volume -= 0.1;
+            } else {
+                backgroundMusic.pause();
+                backgroundMusic.volume = 0.5;
+                clearInterval(fadeOut);
+            }
+        }, 100);
+        
+        saveToLeaderboard(score);
+    }
+
+    function showGameOverPopup() {
+        const popup = document.getElementById('gameover-popup');
+        const finalScoreLoseElement = document.getElementById('final-score-lose');
+        finalScoreLoseElement.textContent = score;
+        popup.classList.remove('hidden');
+        
+        // Fade out music
+        const fadeOut = setInterval(() => {
+            if (backgroundMusic.volume > 0.1) {
+                backgroundMusic.volume -= 0.1;
+            } else {
+                backgroundMusic.pause();
+                backgroundMusic.volume = 0.5;
+                clearInterval(fadeOut);
+            }
+        }, 100);
+        
+        saveToLeaderboard(score);
+    }
+
     // ...existing code...
-});
 
-// Start the game when the page loads
-window.addEventListener('load', showNamePopup);
+    // Update try again handlers to include audio reset
+    document.getElementById('play-again').addEventListener('click', () => {
+        document.getElementById('victory-popup').classList.add('hidden');
+        backgroundMusic.play();
+        resetGame();
+    });
+
+    document.getElementById('play-again-lose').addEventListener('click', () => {
+        document.getElementById('gameover-popup').classList.add('hidden');
+        backgroundMusic.play();
+        resetGame();
+    });
+
+    // Add event listener for back to menu to stop music
+    document.getElementById('back-to-menu').addEventListener('click', () => {
+        backgroundMusic.pause();
+        window.location.href = '../PilihPermainan/PilihPermainan.html';
+    });
+
+    document.getElementById('back-to-menu-lose').addEventListener('click', () => {
+        backgroundMusic.pause();
+        window.location.href = '../PilihPermainan/PilihPermainan.html';
+    });
+
+    document.getElementById('leaderboard').addEventListener('click', () => {
+        window.location.href = '../LeaderboardPermainan/Leaderboard.html';
+    });
+
+    document.getElementById('leader-board').addEventListener('click', () => {
+        window.location.href = '../LeaderboardPermainan/Leaderboard.html';
+    });
+
+    // Start the game when the page loads
+    window.addEventListener('load', showNamePopup);
+});

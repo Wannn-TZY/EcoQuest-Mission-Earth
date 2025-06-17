@@ -1,4 +1,10 @@
 document.addEventListener('DOMContentLoaded', () => {
+    const playerName = localStorage.getItem('playerName');
+    if (!playerName) {
+        window.location.href = '../PilihPermainan/PilihPermainan.html';
+        return;
+    }
+
     const backgroundMusic = new Audio('../../backsound/backsound-game2.mp3');
     backgroundMusic.loop = true;
     backgroundMusic.volume = 0.5;
@@ -29,17 +35,11 @@ document.addEventListener('DOMContentLoaded', () => {
     let timer = 15;
     let gameInterval;
     let isGameRunning = true;
-    let playerName = '';
     let gameInitialized = false; // Add flag to track if game has been initialized
     let spawnInterval; // Move this declaration to the top
 
     // Initialize game
     function initGame() {
-        if (!playerName) {
-            showNamePopup();
-            return;
-        }
-
         if (!gameInitialized) {
             score = 0;
             lives = 3;
@@ -94,12 +94,26 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 
+    // Remove individual name popup functions and use stored name
+    function saveToLeaderboard(score, game) {
+        const leaderboard = JSON.parse(localStorage.getItem('leaderboard')) || [];
+        const newEntry = {
+            name: playerName,
+            score,
+            game,
+            date: new Date().toISOString()
+        };
+        leaderboard.push(newEntry);
+        localStorage.setItem('leaderboard', JSON.stringify(leaderboard));
+    }
+
+    // Update victory/game over functions
     function showVictoryPopup() {
         const popup = document.getElementById('victory-popup');
         const finalScoreElement = document.getElementById('final-score');
         finalScoreElement.textContent = score;
         popup.classList.remove('hidden');
-        saveToLeaderboard(playerName, score, 'Menangkap Sampah');
+        saveToLeaderboard(score, 'Menangkap Sampah');
     }
 
     function showGameOverPopup() {
@@ -302,32 +316,6 @@ document.addEventListener('DOMContentLoaded', () => {
         initGame(); // Start game after name is entered
     }
 
-    function saveToLeaderboard(name, score, game) {
-        const leaderboard = JSON.parse(localStorage.getItem('leaderboard')) || [];
-        const newEntry = {
-            name,
-            score,
-            game,
-            date: new Date().toISOString()
-        };
-        leaderboard.push(newEntry);
-        localStorage.setItem('leaderboard', JSON.stringify(leaderboard));
-    }
-
-    function showNamePopup() {
-        const overlay = document.createElement('div');
-        overlay.className = 'name-popup-overlay';
-        overlay.innerHTML = `
-            <div class="name-popup">
-                <h2>Masukkan Nama Kamu</h2>
-                <input type="text" id="player-name" placeholder="Masukkan nama..." maxlength="15">
-                <button onclick="window.startGameWithName()">Mulai Bermain</button>
-            </div>
-        `;
-        document.body.appendChild(overlay);
-        document.getElementById('player-name').focus();
-    }
-
     // Show name popup immediately
     const backsound = new Audio('bs.mp3');
     backsound.loop = true;
@@ -338,5 +326,5 @@ document.addEventListener('DOMContentLoaded', () => {
         }, { once: true });
     });
 
-    showNamePopup();
+    initGame();
 });

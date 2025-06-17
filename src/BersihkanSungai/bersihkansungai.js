@@ -23,7 +23,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     let score = 0;
     let lives = 3;
-    let timeLeft = 20;
+    let timeLeft = 60;
     let gameInterval;
     let timerInterval;
 
@@ -95,7 +95,7 @@ document.addEventListener('DOMContentLoaded', () => {
     function resetGame() {
         score = 0;
         lives = 3;
-        gameTimer = 20;
+        gameTimer = 60;
         isGameActive = true;
         
         backgroundMusic.volume = 0.5;
@@ -113,38 +113,27 @@ document.addEventListener('DOMContentLoaded', () => {
         startGame();
     }
 
-    document.getElementById('play-again').addEventListener('click', () => {
-        document.getElementById('victory-popup').classList.add('hidden');
-        resetGame();
-    });
-
+    document.getElementById('play-again').addEventListener('click', resetGame);
+    document.getElementById('play-again-lose').addEventListener('click', resetGame);
     document.getElementById('back-to-menu').addEventListener('click', () => {
         window.location.href = '../PilihPermainan/PilihPermainan.html';
     });
-
-    // Event listeners for game over popup buttons
-    document.getElementById('play-again-lose').addEventListener('click', () => {
-        document.getElementById('gameover-popup').classList.add('hidden');
-        resetGame();
-    });
-
     document.getElementById('back-to-menu-lose').addEventListener('click', () => {
         window.location.href = '../PilihPermainan/PilihPermainan.html';
     });
 
-     document.getElementById('leaderboard').addEventListener('click', () => {
+    // Add these event listeners after your existing button listeners
+    document.getElementById('leaderboard').addEventListener('click', () => {
         window.location.href = '../LeaderboardPermainan/Leaderboard.html';
     });
 
     document.getElementById('leader-board').addEventListener('click', () => {
-        window.location.href = '../LeaderboardPermainan/Leaderboard.html';
+        window.location.href = '../LeaderboardPermainan/Leaderboard.html'
     });
 
     function updateLives() {
         lives--;
         livesElement.textContent = `Lives: ${lives}`;
-        
-        // Check game over condition - when lives reach 0
         if (lives <= 0) {
             endGame();
             showGameOverPopup();
@@ -182,7 +171,7 @@ document.addEventListener('DOMContentLoaded', () => {
     function startGame() {
         score = 0;
         lives = 3;
-        timeLeft = 20;
+        timeLeft = 60;
         isGameActive = true;
         
         // Hide any visible popups
@@ -205,15 +194,10 @@ document.addEventListener('DOMContentLoaded', () => {
                 timeLeft--;
                 timerElement.textContent = `Time: ${timeLeft}`;
                 
-                // Check win condition - only when time runs out and lives remain
-                if (timeLeft <= 0) {
-                    if (lives > 0) {
-                        endGame();
-                        showVictoryPopup();
-                    } else {
-                        endGame();
-                        showGameOverPopup();
-                    }
+                // Check win condition
+                if (timeLeft <= 0 && lives > 0) {
+                    endGame();
+                    showVictoryPopup();
                 }
             }
         }, 1000);
