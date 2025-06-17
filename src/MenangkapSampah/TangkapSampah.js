@@ -26,7 +26,7 @@ document.addEventListener('DOMContentLoaded', () => {
     
     let score = 0;
     let lives = 3;
-    let timer = 60;
+    let timer = 15;
     let gameInterval;
     let isGameRunning = true;
     let playerName = '';
@@ -118,7 +118,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
         score = 0;
         lives = 3;
-        timer = 10;
+        timer = 15;
         isGameRunning = true;
         
         // Clear all trash elements

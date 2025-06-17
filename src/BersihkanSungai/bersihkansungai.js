@@ -23,7 +23,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     let score = 0;
     let lives = 3;
-    let timeLeft = 60;
+    let timeLeft = 20;
     let gameInterval;
     let timerInterval;
 
@@ -95,7 +95,7 @@ document.addEventListener('DOMContentLoaded', () => {
     function resetGame() {
         score = 0;
         lives = 3;
-        gameTimer = 60;
+        gameTimer = 20;
         isGameActive = true;
         
         backgroundMusic.volume = 0.5;
@@ -143,6 +143,8 @@ document.addEventListener('DOMContentLoaded', () => {
     function updateLives() {
         lives--;
         livesElement.textContent = `Lives: ${lives}`;
+        
+        // Check game over condition - when lives reach 0
         if (lives <= 0) {
             endGame();
             showGameOverPopup();
@@ -180,7 +182,7 @@ document.addEventListener('DOMContentLoaded', () => {
     function startGame() {
         score = 0;
         lives = 3;
-        timeLeft = 60;
+        timeLeft = 20;
         isGameActive = true;
         
         // Hide any visible popups
@@ -203,10 +205,15 @@ document.addEventListener('DOMContentLoaded', () => {
                 timeLeft--;
                 timerElement.textContent = `Time: ${timeLeft}`;
                 
-                // Check win condition
-                if (timeLeft <= 0 && lives > 0) {
-                    endGame();
-                    showVictoryPopup();
+                // Check win condition - only when time runs out and lives remain
+                if (timeLeft <= 0) {
+                    if (lives > 0) {
+                        endGame();
+                        showVictoryPopup();
+                    } else {
+                        endGame();
+                        showGameOverPopup();
+                    }
                 }
             }
         }, 1000);

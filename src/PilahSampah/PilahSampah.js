@@ -9,7 +9,7 @@ const trashItems = [
 
 let score = 0;
 let lives = 3;
-let timeLeft = 60;
+let timeLeft = 20;
 let gameInterval;
 let isGameOver = false;
 let playerName = '';
@@ -147,6 +147,7 @@ function endGame(result) {
     } else {
         document.getElementById('final-score-lose').textContent = score;
         document.getElementById('gameover-popup').classList.remove('hidden');
+        saveToLeaderboard(playerName, score, 'Pilah Sampah');
     }
 
 }
@@ -190,7 +191,7 @@ function startGameWithName() {
 }
 
 // Modify your popup close handlers
- document.getElementById('play-again').addEventListener('click', () => {
+document.getElementById('play-again').addEventListener('click', () => {
         document.getElementById('victory-popup').classList.add('hidden');
         resetGame();
     });
@@ -209,7 +210,7 @@ function startGameWithName() {
         window.location.href = '../PilihPermainan/PilihPermainan.html';
     });
 
-     document.getElementById('leaderboard').addEventListener('click', () => {
+    document.getElementById('leaderboard').addEventListener('click', () => {
         window.location.href = '../LeaderboardPermainan/Leaderboard.html';
     });
 

@@ -122,7 +122,7 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 function getGradeDescription(score) {
-  if (score >= 90 && score <= 100) {
+  if (score >= 90 && score <= 300) {
     return "SANGAT LUAR BIASA. kamu cerdas";
   } else if (score >= 80 && score <= 89) {
     return "LUAR BIASA. kamu hebat";
