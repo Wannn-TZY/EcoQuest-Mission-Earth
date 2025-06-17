@@ -76,15 +76,20 @@ document.addEventListener('DOMContentLoaded', () => {
 
     function showVictoryPopup() {
         const popup = document.getElementById('victory-popup');
+        const finalScoreElement = document.getElementById('final-score');
+        finalScoreElement.textContent = score;
+        popup.classList.remove('hidden');
         popup.classList.add('show');
-        document.querySelector('#victory-popup .popup-score').textContent = score;
         saveToLeaderboard(playerName, score, 'Bersihkan Sungai');
     }
 
     function showGameOverPopup() {
         const popup = document.getElementById('gameover-popup');
+        const finalScoreLoseElement = document.getElementById('final-score-lose');
+        finalScoreLoseElement.textContent = score;
+        popup.classList.remove('hidden');
         popup.classList.add('show');
-        document.querySelector('#gameover-popup .popup-score').textContent = score;
+        saveToLeaderboard(playerName, score, 'Bersihkan Sungai');
     }
 
     function resetGame() {
@@ -108,21 +113,39 @@ document.addEventListener('DOMContentLoaded', () => {
         startGame();
     }
 
-    document.getElementById('play-again').addEventListener('click', resetGame);
-    document.getElementById('play-again-lose').addEventListener('click', resetGame);
+    document.getElementById('play-again').addEventListener('click', () => {
+        document.getElementById('victory-popup').classList.add('hidden');
+        resetGame();
+    });
+
     document.getElementById('back-to-menu').addEventListener('click', () => {
         window.location.href = '../PilihPermainan/PilihPermainan.html';
     });
+
+    // Event listeners for game over popup buttons
+    document.getElementById('play-again-lose').addEventListener('click', () => {
+        document.getElementById('gameover-popup').classList.add('hidden');
+        resetGame();
+    });
+
     document.getElementById('back-to-menu-lose').addEventListener('click', () => {
         window.location.href = '../PilihPermainan/PilihPermainan.html';
+    });
+
+     document.getElementById('leaderboard').addEventListener('click', () => {
+        window.location.href = '../LeaderboardPermainan/Leaderboard.html';
+    });
+
+    document.getElementById('leader-board').addEventListener('click', () => {
+        window.location.href = '../LeaderboardPermainan/Leaderboard.html';
     });
 
     function updateLives() {
         lives--;
         livesElement.textContent = `Lives: ${lives}`;
         if (lives <= 0) {
-            showGameOverPopup();
             endGame();
+            showGameOverPopup();
         }
     }
 
@@ -157,9 +180,14 @@ document.addEventListener('DOMContentLoaded', () => {
     function startGame() {
         score = 0;
         lives = 3;
-        timeLeft = 20;
-        gameTimer = 20;
+        timeLeft = 60;
         isGameActive = true;
+        
+        // Hide any visible popups
+        const victoryPopup = document.getElementById('victory-popup');
+        const gameoverPopup = document.getElementById('gameover-popup');
+        victoryPopup.classList.add('hidden');
+        gameoverPopup.classList.add('hidden');
         
         scoreElement.textContent = `Score: ${score}`;
         livesElement.textContent = `Lives: ${lives}`;
@@ -174,9 +202,11 @@ document.addEventListener('DOMContentLoaded', () => {
             if (isGameActive) {
                 timeLeft--;
                 timerElement.textContent = `Time: ${timeLeft}`;
+                
+                // Check win condition
                 if (timeLeft <= 0 && lives > 0) {
-                    showVictoryPopup();
                     endGame();
+                    showVictoryPopup();
                 }
             }
         }, 1000);
@@ -187,6 +217,7 @@ document.addEventListener('DOMContentLoaded', () => {
         clearInterval(gameInterval);
         clearInterval(timerInterval);
         
+        // Fade out music
         const fadeOut = setInterval(() => {
             if (backgroundMusic.volume > 0.1) {
                 backgroundMusic.volume -= 0.1;
@@ -197,8 +228,13 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         }, 100);
         
+        // Remove all sampah
         const allSampah = document.querySelectorAll('.sampah');
-        allSampah.forEach(sampah => gameContainer.removeChild(sampah));
+        allSampah.forEach(sampah => {
+            if (sampah.parentNode) {
+                sampah.parentNode.removeChild(sampah);
+            }
+        });
     }
 
     function playBackgroundMusic() {

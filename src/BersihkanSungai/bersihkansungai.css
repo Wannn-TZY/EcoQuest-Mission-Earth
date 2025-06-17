@@ -98,224 +98,149 @@ body {
     transform: scale(0.8);
 }
 
-/* Popup styles */
+/* Updated popup styles */
 .popup {
-  display: none;
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-color: rgba(0, 0, 0, 0.7);
-  z-index: 999;
-  justify-content: center;
-  align-items: center;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.8);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s ease-in-out, visibility 0.3s ease-in-out;
 }
 
-.popup.show {
-  display: flex;
+.popup.hidden {
+    display: none;
+}
+
+.popup:not(.hidden) {
+    opacity: 1;
+    visibility: visible;
+    animation: popupFadeIn 0.5s ease-out forwards;
+}
+
+.popup.fade-out {
+    animation: popupFadeOut 0.5s ease-in forwards;
 }
 
 .popup-content {
-  background-color: white;
-  width: 300px;
-  height: 300px;
-  min-width: 0;
-  min-height: 0;
- 
-  padding: 30px;
-  border-radius: 15px;
-  text-align: center;
-  box-shadow: 0 0 10px rgba(0,0,0,0.5);
+    position: relative;
+    text-align: center;
+    transform: scale(0.3);
+    opacity: 0;
+    animation: popupFadeIn 0.5s ease-out 0.2s forwards;
 }
 
-.name-popup-overlay {
-  position: fixed;
-  top: 0;
-  left: 0;
-  right:0;
-  bottom:0;
-  background-color: rgba(0,0,0,0.6);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  z-index: 1000;
-}
-
-.name-popup {
-  background: white;
-  padding: 30px;
-  border-radius: 12px;
-  box-shadow: 0 0 10px rgba(0,0,0,0.5);
-  text-align: center;
-}
-
-/* Popup background overlay */
 .popup-bg {
-  position: fixed;
-  top: 0; left: 0; width: 100vw; height: 100vh;
-  background: rgba(0,0,0,0.4);
-  z-index: 9998;
+    width: 500px;
+    height: auto;
 }
 
-/* Popup box */
-.popup {
-  background: linear-gradient(#fffbe6 60%, #e0f7fa 100%);
-  border: 4px solid #66e6ff;
-  border-radius: 28px;
-  box-shadow: 0 8px 32px rgba(255, 193, 7, 0.18);
-  padding: 2.2rem 2rem 2rem 2rem;
-  min-width: 220px;
-  max-width: 250px;
-  text-align: center;
-  position: fixed;
-  top: 50%; left: 50%;
-  transform: translate(-50%, -50%);
-  z-index: 9999;
-  animation: popupBounce 0.7s;
-}
-
-@keyframes popupBounce {
-  0% { transform: scale(0.7) translate(-50%, -50%); opacity: 0; }
-  60% { transform: scale(1.05) translate(-50%, -50%); opacity: 1; }
-  100% { transform: scale(1) translate(-50%, -50%); }
-}
-
-.popup h2 {
-  color: #ff7675;
-  font-size: 2rem;
-  margin-bottom: 0.5rem;
-  font-family: 'Comic Sans MS', 'Comic Sans', cursive, sans-serif;
-  letter-spacing: 1px;
-}
-
-.popup p {
-  color: #f9a825;
-  font-size: 1.2rem;
-  margin-bottom: 1.2rem;
-  font-weight: bold;
-}
-
-.popup-score {
-  display: inline-block;
-  background: #fffde7;
-  color: #43a047;
-  font-size: 1.5rem;
-  font-weight: bold;
-  padding: 0.3em 1em;
-  border-radius: 12px;
-  margin-bottom: 1.2rem;
-  box-shadow: 0 2px 8px #ffd59e80;
+.final-score {
+    position: absolute;
+    bottom: 14%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 25px;
+    font-weight: bold;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+    animation: scorePopIn 0.6s ease-out 0.5s forwards,
+            scoreColorChange 4s infinite;
+    opacity: 0;
 }
 
 .popup-buttons {
-  display: flex;
-  flex-direction: column;
-  gap: 1rem;
-  margin-top: 1.2rem;
-  align-items: center;
+   position: absolute;
+    bottom: 1.5%; /* Bisa disesuaikan kalau perlu lebih turun */
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    justify-content: center;
+    gap: 20px; /* sedikit lebih sempit jaraknya */
+    animation: buttonsAppear 0.5s ease-out 0.5s both;
 }
 
-.popup button {
-  width: 80%;
-  border: none;
-  border-radius: 18px;
-  font-size: 1.1rem;
-  font-weight: bold;
-  padding: 0.9em 0;
-  cursor: pointer;
-  margin: 0 auto;
-  box-shadow: 0 2px 8px #ffd59e80;
-  transition: background 0.2s, transform 0.15s;
+
+.popup-button {
+    width: 90px; /* kecilin dari 120px */
+    height: auto;
+    cursor: pointer;
+    transition: all 0.3s ease;
 }
 
-#play-again {
-  background: #ffa94d;
-  color: #fff;
-}
-#play-again:hover {
-  background: #ff8800;
-  transform: scale(1.04);
+.popup-button:hover {
+    transform: scale(1.1);
+    filter: brightness(1.2);
 }
 
-#back-to-menu {
-  background: #bdbdbd;
-  color: #fff;
-}
-#back-to-menu:hover {
-  background: #757575;
-  color: #fff;
-  transform: scale(1.04);
+/* Add these keyframe animations */
+@keyframes scoreColorChange {
+    0% { color: #FFD700; }
+    33% { color: #98FB98; }
+    66% { color: #87CEEB; }
+    100% { color: #FFD700; }
 }
 
-#lihat-grade {
-  background: #ffe066;
-  color: #fff;
-}
-#lihat-grade:hover {
-  background: #ffd600;
-  color: #fff;
-  transform: scale(1.04);
-}
-
-/* Tombol sejajar ke samping */
-.score-popup-buttons {
-  display: flex;
-  flex-direction: row;
-  gap: 0.7rem;
-  margin-top: 1.2rem;
-  justify-content: center;
-  align-items: center;
+@keyframes popupFadeIn {
+    from {
+        opacity: 0;
+        transform: scale(0.3);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
 }
 
-/* Tombol lebih kecil dan proporsional */
-.score-btn {
-  min-width: 90px;
-  padding: 0.7em 0.5em;
-  font-size: 1rem;
-  border-radius: 14px;
-  margin: 0;
-  box-shadow: 0 2px 8px #ffd59e80;
-  font-weight: bold;
-  border: none;
-  cursor: pointer;
-  transition: background 0.2s, transform 0.15s;
-  text-align: center;
-  white-space: nowrap;
+@keyframes popupFadeOut {
+    from {
+        opacity: 1;
+        transform: scale(1);
+    }
+    to {
+        opacity: 0;
+        transform: scale(0.3);
+    }
 }
 
-/* Warna tombol */
-.orange-btn {
-  background: #ffa94d;
-  color: #fff;
-}
-.orange-btn:hover {
-  background: #ff8800;
-  transform: scale(1.07);
-}
-.gray-btn {
-  background: #bdbdbd;
-  color: #fff;
-}
-.gray-btn:hover {
-  background: #757575;
-  color: #fff;
-  transform: scale(1.07);
-}
-.yellow-btn {
-  background: #ffe066;
-  color: #fff;
-}
-.yellow-btn:hover {
-  background: #ffd600;
-  color: #fff;
-  transform: scale(1.07);
+@keyframes scorePopIn {
+    0% { 
+        transform: translate(-50%, -50%) scale(0); 
+        opacity: 0; 
+    }
+    70% { 
+        transform: translate(-50%, -50%) scale(1.2); 
+        opacity: 0.7; 
+    }
+    100% { 
+        transform: translate(-50%, -50%) scale(1); 
+        opacity: 1; 
+    }
 }
 
-/* Popup persegi dan proporsional */
-.score-popup-inner {
-  width: 320px;
-  height: 320px;
-  min-width: 0;
-  min-height: 0;
+/* Status bar score animation */
+.status-bar .score {
+    animation: scoreColorChange 4s infinite;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+}
+/* Mobile responsive adjustments */
+@media (max-width: 768px) {
+    .popup-content {
+        padding: 1rem;
+    }
+    
+    .popup-buttons {
+        flex-direction: row;  /* Keep buttons in a row */
+        gap: 0.5rem;  /* Even smaller gap for mobile */
+    }
+    
+    .popup-button {
+        width: 80px;  /* Smaller buttons on mobile */
+    }
 }

@@ -9,9 +9,19 @@ document.addEventListener("DOMContentLoaded", function () {
 
     // Variabel status 
     let volumeAktif = true;
-    let audio = new Audio("../../backsound/backsound-pilihan.mp3");
+    const audio = new Audio("../../backsound/backsound-pilihan.mp3");
     audio.loop = true;
-    audio.play();
+    
+    const playAudio = () => {
+        audio.play().catch(error => {
+            console.log("Autoplay prevented:", error);
+            document.addEventListener('click', () => {
+                audio.play();
+            }, { once: true });
+        });
+    };
+
+    playAudio();
 
     // Fungsi untuk mengaktifkan / menonaktifkan volume
     btnVolume.addEventListener("click", function () {

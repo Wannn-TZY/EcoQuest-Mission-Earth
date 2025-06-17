@@ -217,5 +217,23 @@ function startGameWithName() {
         window.location.href = '../LeaderboardPermainan/Leaderboard.html';
     });
 
+document.addEventListener('DOMContentLoaded', () => {
+    const backgroundMusic = new Audio('../../backsound/backsound-game3.mp3');
+    backgroundMusic.loop = true;
+    backgroundMusic.volume = 0.5;
+
+    const playBackgroundMusic = () => {
+        backgroundMusic.play().catch(error => {
+            console.log("Autoplay prevented:", error);
+            document.addEventListener('click', () => {
+                backgroundMusic.play();
+            }, { once: true });
+        });
+    };
+
+    playBackgroundMusic();
+    // ...existing code...
+});
+
 // Start the game when the page loads
 window.addEventListener('load', showNamePopup);

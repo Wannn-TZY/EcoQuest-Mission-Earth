@@ -19,30 +19,32 @@
             <div class="riverBackground"></div>
         </div>
     <!-- Pop-up Menang -->
-    <div id="victory-popup" class="popup">
-      <div class="popup-content">
-        <h2>Selamat Kamu Menang!</h2>
-        <p>Skor Kamu: <span class="popup-score">0</span></p>
-        <div class="score-popup-buttons">
-          <button id="play-again" class="score-btn orange-btn">Main Lagi</button>
-          <button id="back-to-menu" class="score-btn gray-btn">Kembali ke Menu</button>
-          <button id="lihat-grade" class="score-btn yellow-btn">Lihat Grade</button>
+    <!-- Victory Popup -->
+    <div id="victory-popup" class="popup hidden">
+        <div class="popup-content">
+            <img src="../../Asset/PopUpKemenangan.jpg" class="popup-bg" alt="Popup Kemenangan">
+            <div class="final-score">Score: <span id="final-score">0</span></div>
+            <div class="popup-buttons">
+                <img src="../../Asset/tombolcobalagi.png" id="play-again" class="popup-button" alt="Coba Lagi">
+                <img src="../../Asset/tombolhome.png" id="back-to-menu" class="popup-button" alt="Menu Utama">
+                <img src="../../Asset/tombolleaderboard.png" id="leaderboard" class="popup-button" alt="Leaderboard">
+            </div>
         </div>
-      </div>
     </div>
 
-    <!-- Pop-up Kalah -->
-    <div id="gameover-popup" class="popup">
-      <div class="popup-content">
-        <h2>Game Over</h2>
-        <p>Skor Kamu: <span class="popup-score">0</span></p>
-        <div class="score-popup-buttons">
-          <button id="play-again-lose" class="score-btn orange-btn">Coba Lagi</button>
-          <button id="back-to-menu-lose" class="score-btn gray-btn">Kembali ke Menu</button>
-          <button id="lihat-grade" class="score-btn yellow-btn">Lihat Grade</button>
+    <!-- Game Over Popup -->
+    <div id="gameover-popup" class="popup hidden">
+        <div class="popup-content">
+            <img src="../../Asset/PopUpKekalahan.png" class="popup-bg" alt="Popup Kekalahan">
+            <div class="final-score">Score: <span id="final-score-lose">0</span></div>
+            <div class="popup-buttons">
+                <img src="../../Asset/tombolcobalagi.png" id="play-again-lose" class="popup-button" alt="Coba Lagi">
+                <img src="../../Asset/tombolhome.png" id="back-to-menu-lose" class="popup-button" alt="Menu Utama">
+                <img src="../../Asset/tombolleaderboard.png" id="leader-board" class="popup-button" alt="Leaderboard">
+            </div>
         </div>
-      </div>
     </div>
+
   </div>
 
   <script src="bersihkansungai.js"></script>

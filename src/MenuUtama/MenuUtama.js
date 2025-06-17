@@ -28,3 +28,27 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
 });
+
+document.addEventListener("DOMContentLoaded", function () {
+    const volumeBtn = document.getElementById("volume-btn");
+    const belajarBtn = document.getElementById("btn-belajar");
+    const bermainBtn = document.getElementById("btn-bermain");
+    const kembaliBtn = document.getElementById("btn-kembali");
+
+    let volumeAktif = true; 
+    const audio = new Audio("../../backsound/backsound-menu-utama.mp3"); 
+    audio.loop = true;
+    
+    // Autoplay dengan handling untuk browser policy
+    const playAudio = () => {
+        audio.play().catch(error => {
+            console.log("Autoplay prevented:", error);
+            // Add click handler as fallback
+            document.addEventListener('click', () => {
+                audio.play();
+            }, { once: true });
+        });
+    };
+
+    playAudio(); // Try to play immediately
+});
